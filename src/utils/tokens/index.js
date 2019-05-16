@@ -8,6 +8,8 @@ export const colors = {
   }
 }
 
+export const fontWeights = [400, 700]
+
 export const breakpoints = {
   xs: `400px`,
   sm: `550px`,
@@ -24,9 +26,36 @@ export const lineHeights = {
   loose: 1.75,
 }
 
-export const fontSizes =
-  [`0.72rem`, `0.83rem`, `1rem`, `1.333rem`, `2rem`, `2.66rem`,`4.6rem`]
+const system = [
+  `-apple-system`,
+  `BlinkMacSystemFont`,
+  `Segoe UI`,
+  `Roboto`,
+  `Helvetica Neue`,
+  `Arial`,
+  `Noto Sans`,
+  `sans-serif`,
+  `Apple Color Emoji`,
+  `Segoe UI Emoji`,
+  `Segoe UI Symbol`,
+  `Noto Color Emoji`,
+]
+const header = [`Karla`, ...system]
+const body = [`Karlay`, ...system]
 
+export const fonts = { header, system, body }
+
+export const fontSizes =
+  [`0.72rem`, `0.83rem`, `1rem`, `1.333rem`, `2rem`, `2.66rem`,`4.667rem`]
+
+export const letterSpacings = {
+  normal: `normal`,
+  tight: `-0.8px`,
+  extraTight: `-1.6px`,
+  superTight: `-2px`,
+  mega: `1px`,
+
+}
 export const space = [
   0, 4, 8, 16, 32, 64, 128, 256, 512
 ]
