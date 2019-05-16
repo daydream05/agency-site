@@ -1,21 +1,70 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import SectionMapper from '../components/Sections/SectionMapper'
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const IndexPage = ({ data }) => {
+  return (
+    <Layout>
+      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SectionMapper
+        sections={data.contentfulPage.sections}
+      />
+    </Layout>
+  )
+}
 
 export default IndexPage
+
+export const query = graphql`
+  query {
+    contentfulPage(slug: { eq: "home" }) {
+      sections {
+        __typename
+        ... on ContentfulHero {
+          mainTagline
+          secondaryTagline
+          media {
+            id
+            title
+            fluid {
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
+        }
+        ... on ContentfulProcessSection {
+          tagline
+          processes {
+            id
+            name
+            shortDescription
+            media {
+              id
+            }
+          }
+        }
+        ... on ContentfulProjectSection {
+          tagline
+          projects {
+            id
+            name
+            client
+            tags {
+              id
+              name
+            }
+            coverPhoto {
+              id
+              fluid {
+                ...GatsbyContentfulFluid_withWebp
+              }
+            }
+            slug
+          }
+        }
+      }
+    }
+  }
+`
