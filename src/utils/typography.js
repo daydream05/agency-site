@@ -5,7 +5,8 @@ import {
   fontSizes,
   fonts,
   lineHeights,
-  letterSpacings
+  letterSpacings,
+  mediaQueries
 } from './tokens'
 
 const typography = new Typography({
@@ -24,12 +25,13 @@ const typography = new Typography({
         textDecoration: `none`,
       },
       h1: {
-        fontSize: fontSizes[6],
+        fontSize: fontSizes[5],
         lineHeight: lineHeights.solid,
         letterSpacing: letterSpacings.superTight,
+        color: 'inherit',
       },
       h2: {
-        fontSize: fontSizes[5],
+        fontSize: fontSizes[4],
         lineHeight: lineHeights.dense,
         letterSpacing: letterSpacings.superTight,
       },
@@ -48,6 +50,23 @@ const typography = new Typography({
       p: {
         lineHeight: lineHeights.loose,
       },
+      [mediaQueries.lg]: {
+        h1: {
+          fontSize: fontSizes[6],
+        },
+        h2: {
+          fontSize: fontSizes[5],
+        },
+        h3: {
+          fontSize: fontSizes[4],
+        },
+        h4: {
+          fontSize: fontSizes[3],
+        },
+        h5: {
+          fontSize: fontSizes[0],
+        },
+      }
     }
   }
 })

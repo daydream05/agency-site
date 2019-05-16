@@ -10,8 +10,10 @@ export const colors = {
 
 export const fontWeights = [400, 700]
 
+export const headerHeight = `120px`
+
 export const breakpoints = {
-  xs: `400px`,
+  xs: `375px`,
   sm: `550px`,
   md: `750px`,
   lg: `1000px`,

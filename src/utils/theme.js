@@ -5,7 +5,8 @@ import {
   fontSizes,
   space,
   maxWidth,
-  mediaQueries
+  mediaQueries,
+  headerHeight,
 } from './tokens'
 
 export default {
@@ -16,4 +17,5 @@ export default {
   space,
   maxWidth,
   mediaQueries,
+  headerHeight,
 }
