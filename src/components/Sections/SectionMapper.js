@@ -1,8 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Hero from './Hero';
 import ProjectSection from './ProjectSection'
-import ProcessSection from './ProccessSection'
+import ProcessSection from './ProcessSection'
 
 const SectionMapper = ({ sections }) => {
   console.log(sections)
@@ -12,7 +11,6 @@ const SectionMapper = ({ sections }) => {
       case 'ContentfulHero':
         return (
           <Hero
-            key={section}
             mainText={section.mainTagline}
             subText={section.secondaryTagline}
             media={section.media}
@@ -23,12 +21,14 @@ const SectionMapper = ({ sections }) => {
         return (
           <ProjectSection
             projectList={section.projects}
+            key={index}
           />
         )
       case 'ContentfulProcessSection':
           return (
             <ProcessSection
               processList={section.processes}
+              key={index}
             />
           )
       default:

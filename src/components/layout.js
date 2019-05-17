@@ -10,11 +10,14 @@ import PropTypes from "prop-types"
 import { ThemeProvider } from 'styled-components'
 import theme from '../utils/theme'
 
+import Header from './Header'
+
 const Layout = ({ children }) => {
   console.log(theme)
   return (
     <ThemeProvider theme={theme}>
       <div>
+        <Header />
         <main>{children}</main>
       </div>
     </ThemeProvider>

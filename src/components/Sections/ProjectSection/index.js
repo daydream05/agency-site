@@ -23,6 +23,8 @@ const ProjectCard = (props) => {
         fluid={media.fluid}
         css={css`
           flex: 1;
+          min-height: 450px;
+          max-height: 450px;
         `}
       />
       <div>

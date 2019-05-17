@@ -27,10 +27,6 @@ const Hero = (props) => {
   return (
     <Section>
       <Flex
-        px={{
-          xs: 0,
-          xl: 7,
-        }}
         pt={{
           xl: 5,
         }}
@@ -44,7 +40,7 @@ const Hero = (props) => {
           xl: 'black',
         }}
         px={{
-          x: 3,
+          xs: 4,
           xl: 6,
         }}
         css={css`

@@ -21,12 +21,14 @@ const ProcessLoader = props => {
 
   return (
     <div css={css`
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-gap: ${space[2]}px;
+      align-items: center;
       color: ${colors.white};
+      
       ${mediaQueries.xl} {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        grid-gap: ${space[2]}px;
-        align-items: center;
+        color: ${colors.white};
         opacity: ${isActive ? 1 : 0.2};
       }
     `}>
@@ -47,6 +49,8 @@ const ProcessSection = (props) => {
   return (
     <section
       css={css`
+        display: grid;
+        position: relative;
         ${mediaQueries.xl} {
           position: relative;
         }
@@ -54,18 +58,30 @@ const ProcessSection = (props) => {
     >
       <Img
         fluid={processList[0].media.fluid}
+        css={css`
+          height: 100%;
+          width: 100%;
+          position: absolute !important;
+        `}
       />
       <ul css={css`
         display: flex;
+        flex-direction: column;
         list-style: none;
-        position: absolute;
-        max-width: ${maxWidth.xl};
-        width: 100%;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        bottom: ${space[4]}px;
-        z-index: 1;
+        margin: 0;
+        position: relative;
+
+        ${mediaQueries.xl} {
+          flex-direction: row;
+          position: absolute;
+          max-width: ${maxWidth.xl};
+          width: 100%;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          bottom: ${space[5]}px;
+          z-index: 1;
+        }
       `}>
         {processList.map((item, index) => {
           const isFirst = index === 0
@@ -73,7 +89,11 @@ const ProcessSection = (props) => {
             <li key={item.id}
               css={css`
                 flex: 1;
-                margin: 0 ${space[2]}px;
+                margin: ${space[4]}px ${space[4]}px;
+
+                ${mediaQueries.xl} {
+                  margin: 0 ${space[2]}px;
+                } 
               `}
             >
               <ProcessLoader

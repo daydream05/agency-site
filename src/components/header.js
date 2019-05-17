@@ -1,32 +1,36 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { css } from 'styled-components'
+
+import { headerHeight, maxWidth } from '../utils/tokens'
 
 const Header = ({ siteTitle }) => (
   <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
+    css={css`
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: ${headerHeight};
+      width: 100%;
+
+      max-width: ${maxWidth.xl};
+      margin: auto;
+      
+    `}
   >
     <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
     >
-      <h1 style={{ margin: 0 }}>
+      <span style={{ margin: 0 }}>
         <Link
           to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
         >
-          {siteTitle}
+          Agency
         </Link>
-      </h1>
+      </span>
     </div>
   </header>
 )
