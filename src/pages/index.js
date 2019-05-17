@@ -42,6 +42,12 @@ export const query = graphql`
             shortDescription
             media {
               id
+              fluid {
+                ...GatsbyContentfulFluid_withWebp
+              }
+              fixed {
+                ...GatsbyContentfulFixed_withWebp
+              }
             }
           }
         }

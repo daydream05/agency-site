@@ -53,7 +53,9 @@ const ProjectSection = (props) => {
   console.log(projectList)
   return (
     <Section
-      py={7}
+      py={{
+        xl: 7,
+      }}
       css={css`
         display: grid;
 

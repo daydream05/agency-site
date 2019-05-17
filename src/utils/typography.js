@@ -46,6 +46,7 @@ const typography = new Typography({
       h5: {
         fontSize: fontSizes[0],
         letterSpacing: letterSpacings.mega,
+        color: 'inherit',
       },
       p: {
         lineHeight: lineHeights.loose,
