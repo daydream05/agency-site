@@ -24,51 +24,13 @@ export const query = graphql`
       sections {
         __typename
         ... on ContentfulHero {
-          mainTagline
-          secondaryTagline
-          media {
-            id
-            title
-            fluid {
-              ...GatsbyContentfulFluid_withWebp
-            }
-          }
+          ...HeroContentful_withMedia
         }
         ... on ContentfulProcessSection {
-          tagline
-          processes {
-            id
-            name
-            shortDescription
-            media {
-              id
-              fluid {
-                ...GatsbyContentfulFluid_withWebp
-              }
-              fixed {
-                ...GatsbyContentfulFixed_withWebp
-              }
-            }
-          }
+          ...ProcessSectionContentful
         }
         ... on ContentfulProjectSection {
-          tagline
-          projects {
-            id
-            name
-            client
-            tags {
-              id
-              name
-            }
-            coverPhoto {
-              id
-              fluid {
-                ...GatsbyContentfulFluid_withWebp
-              }
-            }
-            slug
-          }
+          ...ProjectSectionContentful
         }
       }
     }
