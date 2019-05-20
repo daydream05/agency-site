@@ -1,9 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 import styled, { css } from 'styled-components'
 import { Flex } from 'rebass'
 
+import heroProptypes from './hero-prop-types'
 import { headerHeight, mediaQueries, colors, space } from '../../../utils/tokens'
 
 const Section = styled.section`
@@ -87,8 +87,4 @@ const Hero = (props) => {
 
 export default Hero
 
-Hero.propTypes = {
-  mainText: PropTypes.string,
-  subText: PropTypes.string,
-  media: PropTypes.object,
-}
+Hero.propTypes = heroProptypes
