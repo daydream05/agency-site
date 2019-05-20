@@ -56,6 +56,7 @@ const Footer = (props) => {
                 font-size: ${fontSizes[3]};
               }
             `}
+            href={`mailto:${email}`}
           >{email}</a>
         </Box>
         <hr css={css`
@@ -98,9 +99,12 @@ const Footer = (props) => {
             <h5 css={css`
             font-size: ${fontSizes[2]};
           `}>CONTACTS</h5>
-            <a css={css`
-            display: block;
-          `}>{email}</a>
+            <a
+              css={css`
+                display: block;
+              `}
+              href={`mailto:${email}`}
+          >{email}</a>
             <a href="tel:1-847-555-5555">+1 900 577 473 84</a>
           </Box>
         </Flex>
@@ -129,7 +133,7 @@ const Footer = (props) => {
           <span css={css`
             font-size: ${fontSizes[0]};
             color: ${colors.grey.dark};
-          `}>©2018 All right reserved</span>
+          `}>© 2018 All right reserved</span>
         </Box>
       </Box>
     </footer>
