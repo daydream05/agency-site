@@ -13,7 +13,7 @@ export const fontWeights = [400, 700]
 export const headerHeight = `120px`
 
 export const breakpoints = {
-  xs: `375px`,
+  xs: `320px`,
   sm: `550px`,
   md: `750px`,
   lg: `1000px`,
