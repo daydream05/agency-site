@@ -11,6 +11,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from '../utils/theme'
 
 import Header from './Header'
+import Footer from './Footer'
 
 const Layout = ({ children }) => {
   console.log(theme)
@@ -19,6 +20,7 @@ const Layout = ({ children }) => {
       <div>
         <Header />
         <main>{children}</main>
+        <Footer />
       </div>
     </ThemeProvider>
   )
