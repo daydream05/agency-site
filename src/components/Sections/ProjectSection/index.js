@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import Img from 'gatsby-image'
 import { space, backgroundColor } from 'styled-system'
 
-import { colors, mediaQueries, maxWidth, space as tokenSpace } from '../../../utils/tokens' 
+import { mediaQueries, maxWidth, space as tokenSpace } from '../../../utils/tokens' 
 
 const ProjectCardRoot = styled.section`
   display: flex;
