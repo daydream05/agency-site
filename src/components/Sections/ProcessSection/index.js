@@ -62,6 +62,10 @@ const ProcessSection = (props) => {
           height: 100%;
           width: 100%;
           position: absolute !important;
+
+          ${mediaQueries.xl} {
+            position: relative !important;
+          }
         `}
       />
       <ul css={css`

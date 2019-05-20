@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import styled, { css } from 'styled-components'
 import { Flex } from 'rebass'
 
-import { headerHeight, mediaQueries, colors } from '../../../utils/tokens'
+import { headerHeight, mediaQueries, colors, space } from '../../../utils/tokens'
 
 const Section = styled.section`
   display: flex;
@@ -39,16 +39,16 @@ const Hero = (props) => {
           xs: 'white',
           xl: 'black',
         }}
-        px={{
-          xs: 4,
-          xl: 6,
-        }}
         css={css`
           position: absolute;
           z-index: 1;
+          padding-left: ${space[4]}px;
+          padding-right: ${space[4]}px;
 
-          ${mediaQueries.lg} {
+          ${mediaQueries.xl} {
             position: initial;
+            padding-left: ${space[6]}px;
+            padding-right: ${space[6]}px;
           }
         `}
       >

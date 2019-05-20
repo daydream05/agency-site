@@ -27,6 +27,9 @@ const Header = ({ siteTitle }) => (
       <span style={{ margin: 0 }}>
         <Link
           to="/"
+          css={css`
+            font-weight: bold;
+          `}
         >
           Agency
         </Link>

@@ -23,6 +23,7 @@ const typography = new Typography({
     return {
       a: {
         textDecoration: `none`,
+        color: colors.black,
       },
       h1: {
         fontSize: fontSizes[5],
