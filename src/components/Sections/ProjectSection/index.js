@@ -1,9 +1,9 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import Img from 'gatsby-image'
-import { space } from 'styled-system'
+import { space, backgroundColor } from 'styled-system'
 
-import { mediaQueries, maxWidth, space as tokenSpace } from '../../../utils/tokens' 
+import { colors, mediaQueries, maxWidth, space as tokenSpace } from '../../../utils/tokens' 
 
 const ProjectCardRoot = styled.section`
   display: flex;
@@ -49,6 +49,7 @@ const ProjectCard = (props) => {
 
 const Section = styled.section`
   ${space};
+  ${backgroundColor};
 `
 const ProjectSection = (props) => {
   const { projectList } = props
@@ -56,28 +57,34 @@ const ProjectSection = (props) => {
   return (
     <Section
       py={{
+        xs: 5,
         xl: 7,
       }}
-      css={css`
+      px={{
+        xs: 4,
+      }}
+      bg='grey.light'
+    >
+      <div css={css`
         display: grid;
-
         ${mediaQueries.xl} {
           grid-gap: ${tokenSpace[4]}px;
           grid-template-columns: repeat(3, 1fr);
           max-width: ${maxWidth.xl};
           margin: auto;
         }
-    `}>
-      {projectList.map((project, index) =>{
-        return (
-          <ProjectCard
-            key={project.id}
-            name={project.name}
-            client={project.client}
-            tags={project.tags}
-            media={project.coverPhoto}
-          />
-      )})}
+      `}>
+        {projectList.map((project, index) =>{
+          return (
+            <ProjectCard
+              key={project.id}
+              name={project.name}
+              client={project.client}
+              tags={project.tags}
+              media={project.coverPhoto}
+            />
+        )})}
+      </div>
     </Section>
   )
 }
