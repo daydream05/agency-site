@@ -72,7 +72,19 @@ export const clientSectionFragment = graphql`
       fixed(width: 100) {
         ...GatsbyContentfulFixed_withWebp
       }
-      fluid(maxWidth: 100) {
+      fluid(maxHeight: 33) {
+        ...GatsbyContentfulFluid_withWebp
+      }
+    }
+  }
+`
+
+export const contactSectionFragment = graphql`
+  fragment ContactSectionContentful on ContentfulContactSection {
+    tagline
+    backgroundImage {
+      title
+      fluid {
         ...GatsbyContentfulFluid_withWebp
       }
     }
