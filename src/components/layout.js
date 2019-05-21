@@ -7,7 +7,7 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider, css } from 'styled-components'
 import theme from '../utils/theme'
 
 import Header from './Header'
@@ -17,9 +17,15 @@ const Layout = ({ children }) => {
   console.log(theme)
   return (
     <ThemeProvider theme={theme}>
-      <div>
+      <div css={css`
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      `}>
         <Header />
-        <main>{children}</main>
+        <main css={css`
+          flex: 1;
+        `}>{children}</main>
         <Footer />
       </div>
     </ThemeProvider>

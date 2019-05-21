@@ -5,6 +5,7 @@ export const colors = {
   grey: {
     dark: `#D4D4D4`,
     light: `#F8F8F8`,
+    reallyDark: `#979EA6`,
   }
 }
 

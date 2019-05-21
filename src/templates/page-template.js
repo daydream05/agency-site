@@ -35,6 +35,9 @@ export const query = graphql`
         ... on ContentfulProjectSection {
           ...ProjectSectionContentful
         }
+        ... on ContentfulClientSection {
+          ...ClientSectionContentful
+        }
       }
       metaDescription {
         internal {

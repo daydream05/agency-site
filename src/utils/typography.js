@@ -25,6 +25,9 @@ const typography = new Typography({
         textDecoration: `none`,
         color: colors.black,
       },
+      address: {
+        marginBottom: 0,
+      },
       h1: {
         fontSize: fontSizes[5],
         lineHeight: lineHeights.solid,
@@ -52,7 +55,7 @@ const typography = new Typography({
       p: {
         lineHeight: lineHeights.loose,
       },
-      [mediaQueries.lg]: {
+      [mediaQueries.xl]: {
         h1: {
           fontSize: fontSizes[6],
         },

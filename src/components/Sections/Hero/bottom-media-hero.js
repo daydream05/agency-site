@@ -18,9 +18,11 @@ const BottomImageHeroRoot = styled.section`
   padding-top: ${headerHeight};
   padding-left: ${space[4]}px;
   padding-right: ${space[4]}px;
+  padding-bottom: ${space[5]}px;
 
   ${mediaQueries.xl} {
-    padding-top: calc(${headerHeight} + ${space[5]}px);
+    padding-top: calc(${headerHeight} + ${space[4]}px);
+    padding-bottom: ${space[5]}px;
     padding-left: ${space[6]}px;
     padding-right: ${space[6]}px;
   }
