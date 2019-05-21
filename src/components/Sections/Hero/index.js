@@ -1,3 +1,7 @@
+/**
+ * This is the default hero component
+ */
+
 import React from 'react'
 import Img from 'gatsby-image'
 import styled, { css } from 'styled-components'
@@ -23,7 +27,7 @@ const Section = styled.section`
 `
 
 const Hero = (props) => {
-  const { mainText, subText, media} = props
+  const { mainText, subText, media } = props
   return (
     <Section>
       <Flex

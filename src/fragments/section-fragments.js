@@ -4,6 +4,7 @@ export const heroFragment = graphql`
   fragment HeroContentful_withMedia on ContentfulHero {
     mainTagline
     secondaryTagline
+    type
     media {
       id
       title

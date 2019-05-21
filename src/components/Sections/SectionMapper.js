@@ -1,5 +1,5 @@
 import React from 'react'
-import Hero from './Hero';
+import HeroSelector from "./Hero/hero-selector";
 import ProjectSection from './ProjectSection'
 import ProcessSection from './ProcessSection'
 
@@ -10,10 +10,11 @@ const SectionMapper = ({ sections }) => {
     switch(section.__typename) {
       case 'ContentfulHero':
         return (
-          <Hero
+          <HeroSelector
             mainText={section.mainTagline}
             subText={section.secondaryTagline}
             media={section.media}
+            type={section.type}
             key={index}
           />
         )

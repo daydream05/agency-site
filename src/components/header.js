@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { css } from 'styled-components'
 
-import { headerHeight, maxWidth } from '../utils/tokens'
+import { headerHeight, maxWidth, space, mediaQueries } from '../utils/tokens'
 
 const Header = ({ siteTitle }) => (
   <header
@@ -23,6 +23,13 @@ const Header = ({ siteTitle }) => (
     `}
   >
     <div
+      css={css`
+        padding: 0 ${space[4]}px;
+
+        ${mediaQueries.xl} {
+          padding: 0;
+        }
+      `}
     >
       <span style={{ margin: 0 }}>
         <Link
