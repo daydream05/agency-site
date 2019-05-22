@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import TextareaAutosize from 'react-autosize-textarea'
-
-import { colors, fontSizes, space, letterSpacings, mediaQueries } from '../../../../utils/tokens'
+import { Dialog, DialogOverlay, DialogContent } from '@reach/dialog'
+import { colors, fontSizes, space, letterSpacings, mediaQueries, zIndex } from '../../../../utils/tokens'
 
 import Button from '../../../Buttons'
 
@@ -131,7 +131,7 @@ const Form = () => {
         <Button
           variant="default"
           width="100%"
-          onClick={closeModal}
+          onClick={handleSubmit}
         >Submit</Button>
         <p css={css`
           color: ${colors.grey.dark};
@@ -140,6 +140,49 @@ const Form = () => {
           margin-bottom: 0;
         `}>We’d love to hear from you!</p>
       </div>
+      <DialogOverlay
+        isOpen={showModal}
+        onDismiss={closeModal}
+        css={css`
+          position: absolute;
+          top: 0%;
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background-color: ${colors.black}d4;
+          z-index: ${zIndex.submitFormModal};
+        `}
+      >
+          <DialogContent
+            style={{
+              padding: `${space[5]}px ${space[5]}px`,
+              backgroundColor: colors.white,
+              display: `flex`,
+              flexDirection: `column`,
+            }}
+          >
+            <div css={css`
+              margin-bottom: ${space[3]}px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            `}>
+              <h3>We received your inquiry!</h3>
+              <p>We'll get back to you as soon as we can.</p>
+            </div>
+            <Button
+              variant="dark"
+              onClick={closeModal}
+              css={css`
+              width: 50%;
+              margin: auto;
+            `}
+            >Close</Button>
+          </DialogContent>
+      </DialogOverlay>
     </form>
   )
 }

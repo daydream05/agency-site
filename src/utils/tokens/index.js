@@ -78,4 +78,5 @@ export { mediaQueries }
 
 export const zIndex = {
   header: 99,
+  submitFormModal: 100,
 }
