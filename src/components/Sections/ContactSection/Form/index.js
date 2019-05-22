@@ -149,24 +149,34 @@ const Form = () => {
         isOpen={showModal}
         onDismiss={closeModal}
         css={css`
-          position: absolute;
+          position: fixed;
           top: 0%;
           width: 100%;
           height: 100vh;
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
+          padding-top: 40%;
           background-color: ${colors.black}d4;
           z-index: ${zIndex.submitFormModal};
+
+          ${mediaQueries.lg} {
+            padding-top: 0;
+            justify-content: center;
+            align-items: center;
+          }
         `}
       >
           <DialogContent
             style={{
-              padding: `${space[5]}px ${space[5]}px`,
+              padding: `${space[5]}px ${space[4]}px`,
+              margin: `0 ${space[3]}px`,
               backgroundColor: colors.white,
               display: `flex`,
               flexDirection: `column`,
+              [mediaQueries.lg]: {
+                padding: `${space[5]}px ${space[5]}px`,
+                margin: `0`,
+              },
             }}
           >
             <div css={css`
