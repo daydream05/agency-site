@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import TextareaAutosize from 'react-autosize-textarea'
-import { Dialog, DialogOverlay, DialogContent } from '@reach/dialog'
+import { DialogOverlay, DialogContent } from '@reach/dialog'
 import { colors, fontSizes, space, letterSpacings, mediaQueries, zIndex } from '../../../../utils/tokens'
 
 import Button from '../../../Buttons'
@@ -63,7 +63,12 @@ const Form = () => {
     fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', name, }),
+      body: encode({
+        'form-name': 'contact',
+        name: name, 
+        email: email,
+        message: message
+      }),
     })
       .then(handleSuccess)
       .catch(error => alert(error))
