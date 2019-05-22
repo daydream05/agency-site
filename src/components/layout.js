@@ -14,7 +14,6 @@ import Header from './Header'
 import Footer from './Footer'
 
 const Layout = ({ children }) => {
-  console.log(theme)
   return (
     <ThemeProvider theme={theme}>
       <div css={css`

@@ -15,7 +15,6 @@ const CardTitle = styled.h2`
 `
 const ProjectCard = (props) => {
   const { name, client, tags, media } = props
-  console.log(space)
 
   return (
     <ProjectCardRoot>
@@ -53,7 +52,6 @@ const Section = styled.section`
 `
 const ProjectSection = (props) => {
   const { projectList } = props
-  console.log(projectList)
   return (
     <Section
       py={{
