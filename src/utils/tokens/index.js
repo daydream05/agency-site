@@ -75,3 +75,7 @@ for (let breakpoint in breakpoints) {
 }
 
 export { mediaQueries }
+
+export const zIndex = {
+  header: 99,
+}

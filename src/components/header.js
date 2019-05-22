@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import styled, { css } from 'styled-components'
 
-import { headerHeight, fontSizes, maxWidth, space, mediaQueries } from '../utils/tokens'
+import { headerHeight, fontSizes, maxWidth, space, mediaQueries, zIndex } from '../utils/tokens'
 
 const MenuLink = styled(Link)`
   font-weight: bold;
@@ -18,8 +18,6 @@ const Header = () => {
     return link.slug !== 'home'
   })
 
-  console.log(filteredLinks)
-
   return (
     <header
       css={css`
@@ -31,6 +29,7 @@ const Header = () => {
         right: 0;
         height: ${headerHeight};
         width: 100%;
+        z-index: ${zIndex.header};
 
         max-width: ${maxWidth.xl};
         margin: auto;
