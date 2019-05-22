@@ -3,9 +3,9 @@ import HeroSelector from "./Hero/hero-selector";
 import ProjectSection from './ProjectSection'
 import ProcessSection from './ProcessSection'
 import ClientSection from './ClientSection'
+import ContactSection from './ContactSection'
 
 const SectionMapper = ({ sections }) => {
-  console.log(sections)
 
   const section = sections.map((section, index) => {
     switch(section.__typename) {
@@ -39,6 +39,14 @@ const SectionMapper = ({ sections }) => {
             mainText={section.tagline}
             subText={section.description.internal.content}
             clientLogos={section.clientLogos}
+            key={index}
+          />
+        )
+      case 'ContentfulContactSection':
+        return (
+          <ContactSection
+            mainText={section.tagline}
+            backgroundImage={section.backgroundImage}
             key={index}
           />
         )

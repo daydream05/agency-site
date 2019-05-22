@@ -84,7 +84,7 @@ export const contactSectionFragment = graphql`
     tagline
     backgroundImage {
       title
-      fluid {
+      fluid(quality: 100) {
         ...GatsbyContentfulFluid_withWebp
       }
     }
