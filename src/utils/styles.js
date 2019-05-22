@@ -1,0 +1,17 @@
+import { colors, fontSizes, space } from "./tokens"
+
+// this gets used by the theme object
+// which is then used by styled-system as a variant
+
+export const buttonStyles = {
+  default: {
+    backgroundColor: colors.accent,
+    color: colors.black,
+    fontSize: fontSizes[1],
+    fontWeight: "bold",
+    padding: `0 ${space[4]}px`,
+    border: `none`,
+    height: `48px`,
+  },
+  secondary: {},
+}

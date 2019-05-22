@@ -7,7 +7,9 @@ import {
   maxWidth,
   mediaQueries,
   headerHeight,
-} from './tokens'
+} from "./tokens"
+
+import { buttonStyles } from "./styles"
 
 export default {
   breakpoints,
@@ -18,4 +20,5 @@ export default {
   maxWidth,
   mediaQueries,
   headerHeight,
+  buttons: buttonStyles,
 }

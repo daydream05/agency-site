@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import TextareaAutosize from 'react-autosize-textarea'
 
-import { colors, fontSizes, space, letterSpacings } from '../../../../utils/tokens'
+import { colors, fontSizes, space, letterSpacings, mediaQueries } from '../../../../utils/tokens'
+
+import Button from '../../../Buttons'
 
 const FieldContainer = styled.div`
   margin-bottom: ${space[4]}px;
@@ -83,9 +85,11 @@ const Form = () => {
     <form
       name="contact"
       method="post"
-      action="#"
       data-netlify="true"
       data-netlify-honeypot="bot"
+      css={css`
+        margin-bottom: 0;
+      `}
     >
       <FieldContainer>
         <FormLabel htmlFor="name">Name</FormLabel>
@@ -117,6 +121,25 @@ const Form = () => {
           onChange={(event) => setMessage(event.target.value)}
         />
       </FieldContainer>
+      <div css={css`
+        ${mediaQueries.lg} {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: ${space[4]}px;
+        }
+      `}>
+        <Button
+          variant="default"
+          width="100%"
+          onClick={closeModal}
+        >Submit</Button>
+        <p css={css`
+          color: ${colors.grey.dark};
+          font-size: ${fontSizes[0]};
+          padding-right: ${space[5]}px;
+          margin-bottom: 0;
+        `}>We’d love to hear from you!</p>
+      </div>
     </form>
   )
 }

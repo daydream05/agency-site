@@ -37,10 +37,6 @@ const ContactSection = (props) => {
       ${mediaQueries.lg} {
         flex-direction: row;
       }
-
-      ${mediaQueries.xl} {
-        height: 748px;
-      }
     `}>
         <BgImContainer>
           <Img
