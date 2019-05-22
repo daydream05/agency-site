@@ -1,23 +1,12 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React from "react"
+import { graphql } from "gatsby"
 
-import Layout from '../components/layout'
-import SectionMapper from '../components/Sections/SectionMapper'
+import Layout from "../components/layout"
+import SectionMapper from "../components/Sections/SectionMapper"
 
 const PageTemplate = ({ data }) => {
-  const {
-    title,
-    metaDescription,
-    sections,
-  } = data.contentfulPage
-  return (
-    <Layout>
-      {sections &&
-        <SectionMapper
-          sections={sections}
-        />}
-    </Layout>
-  )
+  const { title, metaDescription, sections } = data.contentfulPage
+  return <Layout>{sections && <SectionMapper sections={sections} />}</Layout>
 }
 
 export const query = graphql`
@@ -47,8 +36,8 @@ export const query = graphql`
           content
         }
       }
-    } 
+    }
   }
- `
+`
 
- export default PageTemplate
+export default PageTemplate

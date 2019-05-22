@@ -3,15 +3,13 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import SectionMapper from '../components/Sections/SectionMapper'
+import SectionMapper from "../components/Sections/SectionMapper"
 
 const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <SectionMapper
-        sections={data.contentfulPage.sections}
-      />
+      <SectionMapper sections={data.contentfulPage.sections} />
     </Layout>
   )
 }

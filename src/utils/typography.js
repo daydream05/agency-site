@@ -6,15 +6,17 @@ import {
   fonts,
   lineHeights,
   letterSpacings,
-  mediaQueries
-} from './tokens'
+  mediaQueries,
+} from "./tokens"
 
 const typography = new Typography({
-  baseFontSize: '18px',
-  googleFonts: [{
-    name: 'Karla',
-    styles: fontWeights,
-  }],
+  baseFontSize: "18px",
+  googleFonts: [
+    {
+      name: "Karla",
+      styles: fontWeights,
+    },
+  ],
   headerFontFamily: fonts.header,
   bodyFontFamily: fonts.body,
   bodyColor: colors.black,
@@ -32,7 +34,7 @@ const typography = new Typography({
         fontSize: fontSizes[5],
         lineHeight: lineHeights.solid,
         letterSpacing: letterSpacings.superTight,
-        color: 'inherit',
+        color: "inherit",
       },
       h2: {
         fontSize: fontSizes[4],
@@ -50,7 +52,7 @@ const typography = new Typography({
       h5: {
         fontSize: fontSizes[0],
         letterSpacing: letterSpacings.mega,
-        color: 'inherit',
+        color: "inherit",
       },
       p: {
         lineHeight: lineHeights.loose,
@@ -71,9 +73,9 @@ const typography = new Typography({
         h5: {
           fontSize: fontSizes[0],
         },
-      }
+      },
     }
-  }
+  },
 })
 
 export default typography

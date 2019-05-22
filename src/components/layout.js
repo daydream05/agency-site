@@ -7,24 +7,30 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { ThemeProvider, css } from 'styled-components'
-import theme from '../utils/theme'
+import { ThemeProvider, css } from "styled-components"
+import theme from "../utils/theme"
 
-import Header from './Header'
-import Footer from './Footer'
+import Header from "./Header"
+import Footer from "./Footer"
 
 const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <div css={css`
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      `}>
+      <div
+        css={css`
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+        `}
+      >
         <Header />
-        <main css={css`
-          flex: 1;
-        `}>{children}</main>
+        <main
+          css={css`
+            flex: 1;
+          `}
+        >
+          {children}
+        </main>
         <Footer />
       </div>
     </ThemeProvider>

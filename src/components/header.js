@@ -1,9 +1,16 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import styled, { css } from 'styled-components'
+import styled, { css } from "styled-components"
 
-import { headerHeight, fontSizes, maxWidth, space, mediaQueries, zIndex } from '../utils/tokens'
+import {
+  headerHeight,
+  fontSizes,
+  maxWidth,
+  space,
+  mediaQueries,
+  zIndex,
+} from "../utils/tokens"
 
 const MenuLink = styled(Link)`
   font-weight: bold;
@@ -15,7 +22,7 @@ const Header = () => {
   const { links } = data.contentfulMenu
 
   const filteredLinks = links.filter((link, i) => {
-    return link.slug !== 'home'
+    return link.slug !== "home"
   })
 
   return (
@@ -33,7 +40,6 @@ const Header = () => {
 
         max-width: ${maxWidth.xl};
         margin: auto;
-        
       `}
     >
       <div
@@ -47,9 +53,11 @@ const Header = () => {
           }
         `}
       >
-        <span css={css`
-          flex: 1;
-        `}>
+        <span
+          css={css`
+            flex: 1;
+          `}
+        >
           <Link
             to="/"
             css={css`
@@ -67,9 +75,7 @@ const Header = () => {
                 margin-left: ${space[4]}px;
               `}
             >
-              <MenuLink to={`/${link.slug}/`}>
-                {link.title}
-              </MenuLink>
+              <MenuLink to={`/${link.slug}/`}>{link.title}</MenuLink>
             </span>
           )
         })}
