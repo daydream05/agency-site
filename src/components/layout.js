@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { ThemeProvider, css } from "styled-components"
 import theme from "../utils/theme"
 
+import Header from "./Header"
 import Footer from "./Footer"
 
 const Layout = ({ children }) => {
@@ -22,6 +23,7 @@ const Layout = ({ children }) => {
           flex-direction: column;
         `}
       >
+        <Header />
         <main
           css={css`
             flex: 1;

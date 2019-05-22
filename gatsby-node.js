@@ -26,8 +26,9 @@ exports.createPages = ({ graphql, actions }) => {
       const pages = result.data.allContentfulPage.edges
 
       pages.map(({ node }) => {
+        const url = node.slug === `home` ? `/` : `/${node.slug}/`
         createPage({
-          path: `${node.slug}/`,
+          path: url,
           component: path.resolve(`./src/templates/page-template.js`),
           context: {
             slug: node.slug,
