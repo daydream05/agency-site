@@ -19,7 +19,9 @@ const CardTitle = styled.h2`
   ${space};
 `
 const ProjectCard = (props) => {
-  const { name, client, tags, media, number } = props
+  const { name, client, tags, media, number, url } = props
+
+  console.log(`what is this`, url)
 
   return (
     <ProjectCardRoot>
@@ -78,7 +80,7 @@ const ProjectCard = (props) => {
         </div>
       </div>
       <Link
-        to=""
+        to={url}
         css={css`
           font-weight: bold;
           font-size: calc(${fontSizes[0]} - 2px);
@@ -160,6 +162,7 @@ const ProjectSection = (props) => {
               tags={project.tags}
               number={index + 1}
               media={project.coverPhoto}
+              url={project.fields.path}
             />
         )})}
       </div>

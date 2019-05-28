@@ -55,6 +55,9 @@ export const projectSectionFragment = graphql`
         }
       }
       slug
+      fields {
+        path
+      }
     }
   }
 `
