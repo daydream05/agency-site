@@ -159,6 +159,7 @@ const ProjectSection = (props) => {
               client={project.client}
               tags={project.tags}
               number={index + 1}
+              media={project.coverPhoto}
             />
         )})}
       </div>
