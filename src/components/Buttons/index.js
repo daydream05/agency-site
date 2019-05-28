@@ -9,6 +9,7 @@ import { buttonStyle, width } from 'styled-system'
 const Button = styled.button`
   ${buttonStyle}
   ${width}
+  cursor: pointer;
 `
 
 export default Button
