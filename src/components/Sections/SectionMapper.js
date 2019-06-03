@@ -1,6 +1,6 @@
 import React from 'react'
 import HeroSelector from "./Hero/hero-selector";
-import ProjectSection from './ProjectSection'
+import ProjectSectionSelector from './ProjectSection/project-section-selector'
 import ProcessSection from './ProcessSection'
 import ClientSection from './ClientSection'
 import ContactSection from './ContactSection'
@@ -21,7 +21,7 @@ const SectionMapper = ({ sections }) => {
         )
       case 'ContentfulProjectSection':
         return (
-          <ProjectSection
+          <ProjectSectionSelector
             projectList={section.projects}
             key={index}
           />

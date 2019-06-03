@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import SectionMapper from "../components/Sections/SectionMapper"
 
 const ProjectTemplate = ({ data }) => {
-  const { title, metaDescription, fields } = data.contentfulProject
+  const { name, metaDescription, fields } = data.contentfulProject
   return <Layout />
 }
 
