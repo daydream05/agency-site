@@ -1,3 +1,18 @@
+/***
+ * This is the brain behind the dynamic sections.
+ * The `...on ContentfulModelName` query helps us
+ * get the attributes for each specific model. We
+ * then use the `.__typename` attribute to figure
+ * out which component to use.
+ * 
+ * Some of these sections are as is, while some
+ * have a `type` property so you can choose a different
+ * version of the same section.
+ * 
+ * i.e. Hero section can be one big background image or it
+ * can just be text
+ */
+
 import React from 'react'
 import HeroSelector from "./Hero/hero-selector";
 import ProjectSectionSelector from './ProjectSection/project-section-selector'
@@ -6,7 +21,6 @@ import ClientSection from './ClientSection'
 import ContactSection from './ContactSection'
 
 const SectionMapper = ({ sections }) => {
-
   const section = sections.map((section, index) => {
     switch(section.__typename) {
       case 'ContentfulHero':
