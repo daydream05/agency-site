@@ -23,6 +23,7 @@ const SectionMapper = ({ sections }) => {
         return (
           <ProjectSectionSelector
             projectList={section.projects}
+            type={section.type}
             key={index}
           />
         )

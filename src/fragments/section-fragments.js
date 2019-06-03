@@ -39,6 +39,7 @@ export const processSectionFragment = graphql`
 export const projectSectionFragment = graphql`
   fragment ProjectSectionContentful on ContentfulProjectSection {
     tagline
+    type
     projects {
       id
       name

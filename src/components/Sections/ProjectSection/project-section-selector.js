@@ -7,8 +7,9 @@ import ProjectSectionColumns from './project-section-columns'
 import ProjectSectionAlternatingRows from './project-section-alternating-rows'
 
 const ProjectSectionSelector = (props) => {
-  const { projectList } = props;
-  const type = 'alternating rows'
+  const { projectList, type } = props;
+  console.log(type)
+
   const showSection = (type) => {
     switch (type) {
       case 'three columns': {
