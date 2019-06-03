@@ -1,0 +1,1 @@
+export { default as TwoColumnTextSection } from './two-column-text-section'

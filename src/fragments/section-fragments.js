@@ -94,3 +94,15 @@ export const contactSectionFragment = graphql`
     }
   }
 `
+
+export const textSectionFragment = graphql`
+  fragment TextSectionContentful on ContentfulTextSection {
+    tagline
+    title
+    body {
+      childMarkdownRemark {
+        html
+      }
+    }
+  }
+`

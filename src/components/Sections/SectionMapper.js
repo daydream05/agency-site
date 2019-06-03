@@ -19,6 +19,7 @@ import ProjectSectionSelector from './ProjectSection/project-section-selector'
 import ProcessSection from './ProcessSection'
 import ClientSection from './ClientSection'
 import ContactSection from './ContactSection'
+import { TwoColumnTextSection } from './TextSection'
 
 const SectionMapper = ({ sections }) => {
   const hasOnlyOne = sections.length === 1
@@ -68,6 +69,15 @@ const SectionMapper = ({ sections }) => {
             mainText={section.tagline}
             makeMainTextH1={hasOnlyOne}
             backgroundImage={section.backgroundImage}
+            key={index}
+          />
+        )
+      case 'ContentfulTextSection':
+        return (
+          <TwoColumnTextSection
+            mainText={section.tagline}
+            title={section.title}
+            body={section.body.childMarkdownRemark.html}
             key={index}
           />
         )

@@ -30,6 +30,15 @@ export const query = graphql`
         ... on ContentfulProjectSection {
           ...ProjectSectionContentful
         }
+        ... on ContentfulClientSection {
+          ...ClientSectionContentful
+        }
+        ... on ContentfulContactSection {
+          ...ContactSectionContentful
+        }
+        ... on ContentfulTextSection {
+          ...TextSectionContentful
+        }
       }
     }
   }

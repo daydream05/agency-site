@@ -30,6 +30,9 @@ export const query = graphql`
         ... on ContentfulContactSection {
           ...ContactSectionContentful
         }
+        ... on ContentfulTextSection {
+          ...TextSectionContentful
+        }
       }
       metaDescription {
         internal {
