@@ -21,12 +21,14 @@ import ClientSection from './ClientSection'
 import ContactSection from './ContactSection'
 
 const SectionMapper = ({ sections }) => {
+  const hasOnlyOne = sections.length === 1
   const section = sections.map((section, index) => {
     switch(section.__typename) {
       case 'ContentfulHero':
         return (
           <HeroSelector
             mainText={section.mainTagline}
+            makeMainTextH1={hasOnlyOne}
             subText={section.secondaryTagline}
             media={section.media}
             type={section.type}
@@ -37,6 +39,7 @@ const SectionMapper = ({ sections }) => {
         return (
           <ProjectSectionSelector
             projectList={section.projects}
+            makeMainTextH1={hasOnlyOne}
             type={section.type}
             key={index}
           />
@@ -45,6 +48,7 @@ const SectionMapper = ({ sections }) => {
           return (
             <ProcessSection
               processList={section.processes}
+              makeMainTextH1={hasOnlyOne}
               key={index}
             />
           )
@@ -52,6 +56,7 @@ const SectionMapper = ({ sections }) => {
         return (
           <ClientSection
             mainText={section.tagline}
+            makeMainTextH1={hasOnlyOne}
             subText={section.description.internal.content}
             clientLogos={section.clientLogos}
             key={index}
@@ -61,6 +66,7 @@ const SectionMapper = ({ sections }) => {
         return (
           <ContactSection
             mainText={section.tagline}
+            makeMainTextH1={hasOnlyOne}
             backgroundImage={section.backgroundImage}
             key={index}
           />

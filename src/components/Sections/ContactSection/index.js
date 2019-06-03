@@ -17,7 +17,7 @@ const BgImContainer = styled.div`
     width: 50%;
   }
 `
-const MainText = styled.h1`
+const MainText = styled.h2`
   font-size: ${fontSizes[5]};
   margin-bottom: ${space[5]}px;
 `
@@ -26,7 +26,7 @@ const SmallText = styled.h5`
   color: ${colors.grey.reallyDark};
 `
 const ContactSection = (props) => {
-  const { mainText, backgroundImage } = props
+  const { mainText, makeMainTextH1, backgroundImage } = props
   const data = useStaticQuery(companyInfoQuery)
 
   return (
@@ -99,7 +99,9 @@ const ContactSection = (props) => {
           }
         `}>
           <SmallText>CONTACT</SmallText>
-          <MainText>{mainText}</MainText>
+          <MainText
+            as={makeMainTextH1 ? `h1` : null}
+          >{mainText}</MainText>
           <section>
             <Form />
           </section>
