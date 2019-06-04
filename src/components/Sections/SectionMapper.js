@@ -20,6 +20,7 @@ import ProcessSection from './ProcessSection'
 import ClientSection from './ClientSection'
 import ContactSection from './ContactSection'
 import { TwoColumnTextSection } from './TextSection'
+import { ThreeColumnTestimonial } from './TestimonialSection'
 
 const SectionMapper = ({ sections }) => {
   const hasOnlyOne = sections.length === 1
@@ -78,6 +79,21 @@ const SectionMapper = ({ sections }) => {
             mainText={section.tagline}
             title={section.title}
             body={section.body.childMarkdownRemark.html}
+            key={index}
+          />
+        )
+      case 'ContentfulTestimonialSection':
+        const testimonials = section.testimonials.map((testimonial) => {
+          return {
+            ...testimonial,
+            message: testimonial.message.internal.content,
+          }
+        })
+
+        console.log(testimonials)
+        return (
+          <ThreeColumnTestimonial
+            testimonials={testimonials}
             key={index}
           />
         )

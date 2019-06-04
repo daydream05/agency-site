@@ -106,3 +106,28 @@ export const textSectionFragment = graphql`
     }
   }
 `
+
+export const testimonialSection = graphql`
+  fragment TestimonialSectionContentful on ContentfulTestimonialSection {
+    title
+    testimonials {
+      id
+      name: reviewerName
+      message: reviewerMessage {
+        internal {
+          content
+        }
+      }
+      jobTitle: reviewerTitle
+      photo: reviewerPhoto {
+        title
+        fluid(maxWidth: 90 maxHeight: 90) {
+          ...GatsbyContentfulFluid_withWebp
+        }
+        fixed(width: 90 height: 90) {
+          ...GatsbyContentfulFixed_withWebp
+        }
+      }
+    }
+  }
+`
