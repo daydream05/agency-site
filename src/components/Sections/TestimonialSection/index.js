@@ -73,7 +73,9 @@ export const ThreeColumnTestimonial = (props) => {
         margin-right: auto;
         font-size: ${fontSizes[4]};
         text-align: center;
-        margin-bottom: ${space[5]}px;
+        ${mediaQueries.lg} {
+          margin-bottom: ${space[5]}px;
+        }
       `}>What our clients say</h2>
       <ul css={css`
         list-style: none;
