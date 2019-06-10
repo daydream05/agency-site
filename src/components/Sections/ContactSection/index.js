@@ -53,35 +53,73 @@ const ContactSection = (props) => {
             color: ${colors.white};
             display: flex;
             align-items: center;
+            justify-content: space-between;
             position: absolute;
             bottom: 0;
-            right: 0;
+            left: 0;
+            background-color: ${colors.black};
+            width: 100%;
 
-            ${mediaQueries.xl} {
-              background-color: ${colors.black};
 
+            ${mediaQueries.lg} {
               padding: ${space[4]}px ${space[4]}px;
+              width: unset;
+              right: 0;
+              left: unset;
             }
           `}>
           <div css={css`
             display: flex;
             align-items: center;
             font-size: ${fontSizes[2]};
-            margin-right: ${space[4]}px;
 
-              > *:not(:last-child) {
-                margin-right: ${space[3]}px;
-              }
+            > *:not(:last-child) {
+              margin-right: ${space[3]}px;
+            }
+
+            ${mediaQueries.lg} {
+              margin-right: ${space[4]}px;
+            }
               
             `}>
-            <FaFacebookF />
-            <FaInstagram />
-            <FaTwitter />
+            <a
+              title="facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+              css={css`
+                color: ${colors.white};
+              `}
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              title="instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              css={css`
+                color: ${colors.white};
+              `}
+            >
+              <FaInstagram />
+            </a>
+            <a
+              title="twitter"
+              target="_blank"
+              rel="noopener noreferrer"
+              css={css`
+                color: ${colors.white};
+              `}
+            >
+              <FaTwitter />
+            </a>
           </div>
-          <a css={css`
+          <a
+            css={css`
               color: ${colors.white};
               font-weight: bold;
-            `}>{data.contentfulCompanyInformation.email}</a>
+            `}
+            href={`mailto:${data.contentfulCompanyInformation.email}`}
+          >{data.contentfulCompanyInformation.email}</a>
         </div>
         </BgImContainer>
         <div css={css`

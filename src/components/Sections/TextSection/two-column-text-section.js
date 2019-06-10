@@ -12,9 +12,11 @@ const TwoColumnTextSection = (props) => {
   return (
     <Section
       px={{
+        xs: 4,
         lg: 7,
       }}
       py={{
+        xs: 5,
         lg: 6,
       }}
     >
@@ -41,8 +43,13 @@ const TwoColumnTextSection = (props) => {
             ul {
               display: grid;
               grid-template-columns: 1fr 1fr;
-              grid-column-gap: ${space[5]}px;
+              grid-column-gap: ${space[3]}px;
               list-style: none;
+              margin: 0;
+
+              ${mediaQueries.lg} {
+                grid-column-gap: ${space[5]}px;
+              }
             }
           `}
         />
