@@ -36,6 +36,9 @@ export const query = graphql`
         ... on ContentfulTestimonialSection {
           ...TestimonialSectionContentful
         }
+        ... on ContentfulCallToActionSection {
+          ...CallToActionSectionContentful
+        }
       }
       metaDescription {
         internal {

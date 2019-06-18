@@ -21,6 +21,7 @@ import ClientSection from './ClientSection'
 import ContactSection from './ContactSection'
 import { TwoColumnTextSection } from './TextSection'
 import { ThreeColumnTestimonial } from './TestimonialSection'
+import CallToActionSection from './CallToActionSection'
 
 const SectionMapper = ({ sections }) => {
   const hasOnlyOne = sections.length === 1
@@ -95,6 +96,18 @@ const SectionMapper = ({ sections }) => {
           <ThreeColumnTestimonial
             testimonials={testimonials}
             key={index}
+          />
+        )
+      case 'ContentfulCallToActionSection':
+        console.log(section)
+        return (
+          <CallToActionSection
+            key={index}
+            tagline={section.tagline}
+            subTagline={section.subTagline}
+            buttonText={section.buttonText}
+            buttonHasIcon={section.buttonHasIcon}
+            backgroundColor={section.backgroundColor}
           />
         )
       default:
