@@ -12,8 +12,6 @@ const Selector = (props) => {
     backgroundColor
   } = props
 
-  console.log(props)
-
   return (
     <SingleRow
       tagline={tagline}

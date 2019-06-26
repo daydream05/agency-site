@@ -8,7 +8,6 @@ import ProjectSectionAlternatingRows from './project-section-alternating-rows'
 
 const ProjectSectionSelector = (props) => {
   const { projectList, type } = props;
-  console.log(type)
 
   const showSection = (type) => {
     switch (type) {

@@ -7,7 +7,6 @@ import { Section } from '../../StyledComponents'
 
 const TwoColumnTextSection = (props) => {
   const { mainText, title, body } = props
-  console.log(props)
 
   return (
     <Section

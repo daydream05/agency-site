@@ -90,8 +90,6 @@ const SectionMapper = ({ sections }) => {
             message: testimonial.message.internal.content,
           }
         })
-
-        console.log(testimonials)
         return (
           <ThreeColumnTestimonial
             testimonials={testimonials}
@@ -99,7 +97,6 @@ const SectionMapper = ({ sections }) => {
           />
         )
       case 'ContentfulCallToActionSection':
-        console.log(section)
         return (
           <CallToActionSection
             key={index}
