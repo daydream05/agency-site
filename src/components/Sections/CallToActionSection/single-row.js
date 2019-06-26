@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { navigate, graphql, useStaticQuery } from 'gatsby'
 import { css } from 'styled-components'
 
 import { space, mediaQueries, colors } from '../../../utils/tokens'
@@ -13,7 +14,10 @@ const SingleRow = (props) => {
     subTagline,
     backgroundColor,
     buttonText,
+    fields,
   } = props
+
+  const data = useStaticQuery(query)
 
   return (
     <Section
@@ -43,13 +47,24 @@ const SingleRow = (props) => {
       <p>{subTagline}</p>
       <Button
         variant="default"
-        width="75%"
+        onClick={() => navigate(data.contentfulPage.fields.path)}
       >{buttonText}</Button>
     </Section>
   )
 }
 
 export default SingleRow
+
+const query = graphql`
+  query {
+    contentfulPage(slug: { eq: "contact" }) {
+      fields {
+        path
+      }
+    }
+  }
+`
+
 
 SingleRow.propTypes = {
   tagline: PropTypes.string,
