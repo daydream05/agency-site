@@ -25,7 +25,10 @@ export const processSectionFragment = graphql`
       media {
         id
         title
-        fluid {
+        fluid(maxWidth: 3000 maxHeight: 1500, quality: 100) {
+          ...GatsbyContentfulFluid_withWebp
+        }
+        mobileFluid: fluid {
           ...GatsbyContentfulFluid_withWebp
         }
         fixed {
