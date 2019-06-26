@@ -177,7 +177,7 @@ const ProcessSection = (props) => {
                     display: ${isActive ? `block` : `none`};
                     position: absolute;
                     left: 0%;
-                    transform: translateX(calc(-100% - ${space[0]}px));
+                    transform: translateX(-100%);
                     width: ${space[3]}px;
                     height: 50%;
                     background-color: ${colors.white};
@@ -189,7 +189,7 @@ const ProcessSection = (props) => {
                       content: '';
                       position: absolute;
                       left: 0%;
-                      transform: translateX(calc(-100% - ${space[0]}px));
+                      transform: translateX(-100%);
                       width: ${space[3]}px;
                       height: 50%;
                       background-color: ${colors.white};

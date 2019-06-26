@@ -24,14 +24,10 @@ const SingleRow = (props) => {
       css={css`
         background-color: ${colors.black};
         color: ${colors.white};
+        padding: ${space[5]}px ${space[4]}px;
 
         h1,h2,h3,h4,h5,h6 {
           color: ${colors.white};
-          margin-bottom: 0;
-        }
-
-        p {
-          margin-bottom: 0;
         }
 
         ${mediaQueries.lg} {
@@ -43,8 +39,24 @@ const SingleRow = (props) => {
         }
       `}
     >
-      <h3>{tagline}</h3>
-      <p>{subTagline}</p>
+      <h3
+        css={css`
+          margin-bottom: ${space[4]}px;
+
+          ${mediaQueries.lg} {
+            margin-bottom: 0;
+          }
+        `}
+      >{tagline}</h3>
+      <p
+        css={css`
+          margin-bottom: ${space[3]}px;
+
+          ${mediaQueries.lg} {
+            margin-bottom: 0;
+          }
+        `}
+      >{subTagline}</p>
       <Button
         variant="default"
         onClick={() => navigate(data.contentfulPage.fields.path)}

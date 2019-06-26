@@ -114,6 +114,7 @@ const ProjectSectionColumns = (props) => {
     >
       <div css={css`
         display: grid;
+        grid-gap: ${tokenSpace[5]}px;
         ${mediaQueries.xl} {
           grid-gap: ${tokenSpace[4]}px;
           grid-template-columns: repeat(3, 1fr);

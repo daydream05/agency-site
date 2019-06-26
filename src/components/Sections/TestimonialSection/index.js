@@ -61,7 +61,7 @@ export const ThreeColumnTestimonial = (props) => {
   return (
     <Section
       css={css`
-        padding: ${space[3]}px 0;
+        padding: ${space[5]}px 0;
         ${mediaQueries.lg} {
           padding: ${space[6]}px 0;
         }
