@@ -134,3 +134,25 @@ export const testimonialSection = graphql`
     }
   }
 `
+
+export const featureSection = graphql`
+  fragment FeatureSectionContentful on ContentfulFeatureSection {
+    type
+    featuresList {
+      id
+      title
+      subtitle
+      description {
+        internal {
+          content
+        }
+      }
+      image {
+        title
+        fluid(maxWidth: 2000 maxHeight: 1600) {
+          ...GatsbyContentfulFluid_withWebp
+        }
+      }
+    }
+  }
+`

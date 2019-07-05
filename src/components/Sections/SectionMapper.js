@@ -22,6 +22,7 @@ import ContactSection from './ContactSection'
 import { TwoColumnTextSection } from './TextSection'
 import { ThreeColumnTestimonial } from './TestimonialSection'
 import CallToActionSection from './CallToActionSection'
+import FeatureSection from './feature-section'
 
 const SectionMapper = ({ sections }) => {
   const hasOnlyOne = sections.length === 1
@@ -105,6 +106,14 @@ const SectionMapper = ({ sections }) => {
             buttonText={section.buttonText}
             buttonHasIcon={section.buttonHasIcon}
             backgroundColor={section.backgroundColor}
+          />
+        )
+      case 'ContentfulFeatureSection':
+        return (
+          <FeatureSection
+            key={index}
+            featuresList={section.featuresList}
+            type={section.type}
           />
         )
       default:

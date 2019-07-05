@@ -39,6 +39,9 @@ export const query = graphql`
         ... on ContentfulCallToActionSection {
           ...CallToActionSectionContentful
         }
+         ... on ContentfulFeatureSection {
+          ...FeatureSectionContentful
+        }
       }
       metaDescription {
         internal {
