@@ -53,14 +53,17 @@ exports.createPages = ({ graphql, actions }) => {
       const projects = result.data.allContentfulProject.edges
 
       projects.map(({ node }) => {
-        const url = node.fields.path
+        // use `/` for home page and use the generated fields.path for other pages
+        const pageUrl = node.slug === `home` ? `/` : node.fields.path
 
         createPage({
-          path: url,
-          component: path.resolve(`./src/templates/project-template.js`),
+          path: pageUrl,
+          component: path.resolve(
+            `./src/templates/project-template.js`
+          ),
           context: {
             slug: node.slug,
-          }
+          },
         })
       })
 
