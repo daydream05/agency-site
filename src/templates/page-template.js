@@ -3,10 +3,19 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SectionMapper from "../components/Sections/SectionMapper"
+import SEO from '../components/seo'
 
 const PageTemplate = ({ data }) => {
-  const { title, metaDescription, sections } = data.contentfulPage
-  return <Layout>{sections && <SectionMapper sections={sections} />}</Layout>
+  const { title, metaDescription, metaTitle, sections } = data.contentfulPage
+  return (
+    <>
+      <SEO
+        description={metaDescription.internal.content}
+        title={metaTitle || title}
+      />
+      <Layout>{sections && <SectionMapper sections={sections} />}</Layout>
+    </>
+  )
 }
 
 export const query = graphql`
@@ -48,6 +57,7 @@ export const query = graphql`
           content
         }
       }
+      metaTitle
     }
   }
 `
