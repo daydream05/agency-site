@@ -7,6 +7,7 @@ import SEO from '../components/seo'
 
 const PageTemplate = ({ data }) => {
   const { title, metaDescription, metaTitle, sections } = data.contentfulPage
+  
   return (
     <>
       <SEO
