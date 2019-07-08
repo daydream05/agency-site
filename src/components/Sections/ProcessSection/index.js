@@ -100,7 +100,6 @@ const ProcessSection = (props) => {
 
                       ${mediaQueries.xl} {
                         position: relative !important;
-                        width: auto;
                         height: auto;
                       }
 
@@ -146,13 +145,14 @@ const ProcessSection = (props) => {
             ${mediaQueries.xl} {
               display: flex;
               flex-direction: row;
+              justify-content: center;
               position: absolute;
               width: 100%;
               left: 0;
               right: 0;
               margin: 0 auto;
               bottom: ${space[5]}px;
-              padding: 0 ${space[6]}px;
+              padding: 0 ${space[5]}px;
               z-index: 1;
             }
           `}>
