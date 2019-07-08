@@ -5,7 +5,7 @@ import { chunk } from 'lodash'
 import { fontSizes, space, colors, maxWidth, mediaQueries } from '../../../utils/tokens'
 
 const Title = styled.h2`
-  font-family: Karla-Bold;
+  font-weight: bold;
   font-size: ${fontSizes[4]};
   color: #000000;
   letter-spacing: -2px;
@@ -28,7 +28,6 @@ const Container = styled.section`
 `
 
 const SectionDescription = styled.div`
-  font-family: Karla-Regular;
   font-size: ${fontSizes[1]};
   color: ${colors.grey.reallyDark};
   ${mediaQueries.lg} {
@@ -41,7 +40,7 @@ const ClientSection = (props) => {
   const chunkedClientLogos = chunk(clientLogos, 4)
   return (
     <section css={css`
-      background-color: ${colors.grey.light};
+      background-color: ${colors.white};
     `}>
     <Container>
       <div css={css`

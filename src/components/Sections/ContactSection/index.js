@@ -30,23 +30,26 @@ const ContactSection = (props) => {
   const data = useStaticQuery(companyInfoQuery)
 
   return (
-    <section css={css`
-      display: flex;
-      flex-direction: column;
+    <section
+      css={css`
+        display: flex;
+        flex-direction: column;
 
-      ${mediaQueries.lg} {
-        flex-direction: row;
-      }
-    `}>
-        <BgImContainer>
-          <Img
-            alt={backgroundImage.title}
-            fluid={backgroundImage.fluid}
-            css={css`
-              height: 100%;
-            `}
-          />
-        <div css={css`
+        ${mediaQueries.lg} {
+          flex-direction: row;
+        }
+      `}
+    >
+      <BgImContainer>
+        <Img
+          alt={backgroundImage.title}
+          fluid={backgroundImage.fluid}
+          css={css`
+            height: 100%;
+          `}
+        />
+        <div
+          css={css`
             padding: ${space[3]}px ${space[4]}px;
             z-index: 1;
             font-size: ${fontSizes[0]};
@@ -60,28 +63,29 @@ const ContactSection = (props) => {
             background-color: ${colors.black};
             width: 100%;
 
-
             ${mediaQueries.lg} {
               padding: ${space[4]}px ${space[4]}px;
               width: unset;
               right: 0;
               left: unset;
             }
-          `}>
-          <div css={css`
-            display: flex;
-            align-items: center;
-            font-size: ${fontSizes[2]};
+          `}
+        >
+          <div
+            css={css`
+              display: flex;
+              align-items: center;
+              font-size: ${fontSizes[2]};
 
-            > *:not(:last-child) {
-              margin-right: ${space[3]}px;
-            }
+              > *:not(:last-child) {
+                margin-right: ${space[3]}px;
+              }
 
-            ${mediaQueries.lg} {
-              margin-right: ${space[4]}px;
-            }
-              
-            `}>
+              ${mediaQueries.lg} {
+                margin-right: ${space[4]}px;
+              }
+            `}
+          >
             <a
               title="facebook"
               target="_blank"
@@ -119,10 +123,13 @@ const ContactSection = (props) => {
               font-weight: bold;
             `}
             href={`mailto:${data.contentfulCompanyInformation.email}`}
-          >{data.contentfulCompanyInformation.email}</a>
+          >
+            {data.contentfulCompanyInformation.email}
+          </a>
         </div>
-        </BgImContainer>
-        <div css={css`
+      </BgImContainer>
+      <div
+        css={css`
           padding: ${space[5]}px ${space[4]}px;
           ${mediaQueries.lg} {
             padding: ${space[6]}px ${space[5]}px;
@@ -135,15 +142,26 @@ const ContactSection = (props) => {
             margin-left: ${space[6]}px;
             padding: ${space[6]}px 0;
           }
-        `}>
+
+          ${mediaQueries.xxl} {
+            max-width: unset;
+          }
+        `}
+      >
+        <div
+          css={css`
+            ${mediaQueries.xxl} {
+              width: 50%;
+            }
+          `}
+        >
           <SmallText>CONTACT</SmallText>
-          <MainText
-            as={makeMainTextH1 ? `h1` : null}
-          >{mainText}</MainText>
+          <MainText as={makeMainTextH1 ? `h1` : null}>{mainText}</MainText>
           <section>
             <Form />
           </section>
         </div>
+      </div>
     </section>
   )
 }

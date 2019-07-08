@@ -26,6 +26,11 @@ const BottomImageHeroRoot = styled.section`
     padding-left: ${space[6]}px;
     padding-right: ${space[6]}px;
   }
+
+  ${mediaQueries.xxl} {
+    max-width: ${maxWidth.xxl};
+    margin: auto;
+  }
 `
 
 const BottomImageHero = (props) => {

@@ -8,7 +8,7 @@ import styled, { css } from 'styled-components'
 import { Flex } from 'rebass'
 
 import heroProptypes from './hero-prop-types'
-import { headerHeight, mediaQueries, colors, space } from '../../../utils/tokens'
+import { headerHeight, mediaQueries, colors, space, maxWidth } from '../../../utils/tokens'
 
 const Section = styled.section`
   display: flex;
@@ -23,6 +23,13 @@ const Section = styled.section`
     height: calc(100vh - ${headerHeight});
     overflow: hidden;
     align-items: flex-start;
+  }
+
+  ${mediaQueries.xxl} {
+    max-width: ${maxWidth.xxl};
+    margin-left: auto;
+    margin-right: auto;
+    height: unset;
   }
 `
 
@@ -40,8 +47,8 @@ const Hero = (props) => {
         }}
         justifyContent="center"
         color={{
-          xs: 'white',
-          xl: 'black',
+          xs: "white",
+          xl: "black",
         }}
         css={css`
           position: absolute;
@@ -56,13 +63,13 @@ const Hero = (props) => {
           }
         `}
       >
-        <h1 css={css`
-        `}>{mainText}</h1>
+        <h1 css={css``}>{mainText}</h1>
         <p>{subText}</p>
       </Flex>
-      {media && media.fluid && 
+      {media && media.fluid && (
         <Img
-          fluid={media.fluid} alt={media.title}
+          fluid={media.fluid}
+          alt={media.title}
           css={css`
             position: absolute !important;
             width: 100%;
@@ -75,7 +82,7 @@ const Hero = (props) => {
             }
 
             &::after {
-              content: '';
+              content: "";
               position: absolute;
               width: 100%;
               height: 100%;
@@ -84,7 +91,8 @@ const Hero = (props) => {
               opacity: 0.2;
             }
           `}
-        />}
+        />
+      )}
     </Section>
   )
 }

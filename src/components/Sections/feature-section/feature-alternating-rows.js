@@ -14,7 +14,7 @@ const CardContainer = styled.div`
   }
 `
 
-const FeatureSection = styled.section`
+const FeatureContainer = styled.div`
   padding: ${theme.space[5]}px ${theme.space[4]}px;
 
   > * {
@@ -48,51 +48,57 @@ const FeatureAlternatingRows = (props) => {
   const { featuresList } = props
 
   return (
-    <FeatureSection>
-      {featuresList.map((feature, index) => {
-        const isOdd = index % 2 !== 0
-        return (
-          <CardContainer key={feature.id}>
-            <h3
-              css={css`
-                grid-row: 1;
-                grid-column: ${isOdd ? 1 : 2};
-              `}
-            >
-              {feature.title}
-            </h3>
-            <h4
-              css={css`
-                grid-row: 1;
-                grid-column: ${isOdd ? 2 : 1};
-                font-size: ${theme.fontSizes[1]};
-              `}
-            >
-              — {feature.subtitle}
-            </h4>
-            <p
-              css={css`
-                grid-row: 2;
-                grid-column: ${isOdd ? 1 : 2};
-              `}
-            >
-              {feature.description.internal.content}
-            </p>
-            <Img
-              fluid={feature.image.fluid}
-              alt={feature.image.title}
-              css={css`
-                order: -1;
-                margin-bottom: ${theme.space[3]}px;
-                ${theme.mediaQueries.lg} {
-                  margin-bottom: 0;
-                }
-              `}
-            />
-          </CardContainer>
-        )
-      })}
-    </FeatureSection>
+    <section
+      css={css`
+        background-color: ${theme.colors.grey.light};
+      `}
+    >
+      <FeatureContainer>
+        {featuresList.map((feature, index) => {
+          const isOdd = index % 2 !== 0
+          return (
+            <CardContainer key={feature.id}>
+              <h3
+                css={css`
+                  grid-row: 1;
+                  grid-column: ${isOdd ? 1 : 2};
+                `}
+              >
+                {feature.title}
+              </h3>
+              <h4
+                css={css`
+                  grid-row: 1;
+                  grid-column: ${isOdd ? 2 : 1};
+                  font-size: ${theme.fontSizes[1]};
+                `}
+              >
+                — {feature.subtitle}
+              </h4>
+              <p
+                css={css`
+                  grid-row: 2;
+                  grid-column: ${isOdd ? 1 : 2};
+                `}
+              >
+                {feature.description.internal.content}
+              </p>
+              <Img
+                fluid={feature.image.fluid}
+                alt={feature.image.title}
+                css={css`
+                  order: -1;
+                  margin-bottom: ${theme.space[3]}px;
+                  ${theme.mediaQueries.lg} {
+                    margin-bottom: 0;
+                  }
+                `}
+              />
+            </CardContainer>
+          )
+        })}
+      </FeatureContainer>
+    </section>
   )
 }
 
