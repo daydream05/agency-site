@@ -39,8 +39,8 @@ const FeatureSection = styled.section`
   }
 
   ${theme.mediaQueries.xl} {
-    padding-left: ${theme.space[5]}px;
-    padding-right: ${theme.space[5]}px;
+    padding-left: ${theme.space[6]}px;
+    padding-right: ${theme.space[6]}px;
     max-width: ${theme.maxWidth.xxl};
   }
 `
