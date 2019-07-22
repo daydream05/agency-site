@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@emotion/core": "^10.0.14",
+    "@mdx-js/react": "^1.0.27",
     "@reach/dialog": "^0.2.8",
     "@reach/tabs": "^0.1.6",
     "babel-plugin-styled-components": "^1.10.0",
@@ -15,12 +17,13 @@
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.0.37",
     "gatsby-plugin-styled-components": "^3.0.7",
+    "gatsby-plugin-theme-ui": "^0.2.6",
     "gatsby-plugin-typography": "^2.2.13",
     "gatsby-source-contentful": "^2.0.58",
     "gatsby-source-filesystem": "^2.0.35",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.19",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-autosize-textarea": "^7.0.0",
@@ -31,6 +34,7 @@
     "rebass": "^3.1.0",
     "styled-components": "^4.2.0",
     "styled-system": "^4.2.2",
+    "theme-ui": "^0.2.14",
     "typography": "^0.16.19"
   },
   "devDependencies": {

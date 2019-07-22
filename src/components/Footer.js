@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { css } from "styled-components"
+import { css } from "theme-ui"
 
 import { Box, Flex } from "rebass"
 
@@ -138,11 +138,11 @@ const Footer = props => {
           `}
         >
           <span
-            css={css`
-              font-weight: bold;
-              font-size: ${fontSizes[3]};
-              margin-bottom: ${space[3]}px;
-            `}
+            css={css({
+              fontWeight: `bold`,
+              fontSize: 3,
+              mb: 3,
+            })}
           >
             {name}
           </span>
