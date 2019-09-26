@@ -6,9 +6,9 @@ import { colors, fontSizes, space } from "./tokens"
 const buttonInitialStyle = {
   fontSize: fontSizes[1],
   fontWeight: "bold",
-  padding: `0 ${space[4]}px`,
+  padding: `${space[3]}px ${space[4]}px`,
   border: `none`,
-  height: `48px`,
+  minHeight: `48px`,
 }
 
 export const buttonStyles = {

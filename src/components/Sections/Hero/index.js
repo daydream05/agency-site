@@ -6,6 +6,9 @@ import React from 'react'
 import Img from 'gatsby-image'
 import styled, { css } from 'styled-components'
 import { Flex } from 'rebass'
+import { FaPlay } from 'react-icons/fa'
+
+import Button from '../../Buttons'
 
 import heroProptypes from './hero-prop-types'
 import { headerHeight, mediaQueries, colors, space, maxWidth } from '../../../utils/tokens'
@@ -34,7 +37,8 @@ const Section = styled.section`
 `
 
 const Hero = (props) => {
-  const { mainText, subText, media } = props
+  const { mainText, subText, media, buttonText } = props
+  console.log('im here', buttonText)
   return (
     <Section>
       <Flex
@@ -65,6 +69,23 @@ const Hero = (props) => {
       >
         <h1 css={css``}>{mainText}</h1>
         <p>{subText}</p>
+        {buttonText && (
+          <Button
+            variant="default"
+            css={css`
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            `}
+          >
+            Watch the video
+            <FaPlay
+              css={css`
+                margin-left: ${space[2]}px;
+              `}
+            />
+          </Button>
+        )}
       </Flex>
       {media && media.fluid && (
         <Img
