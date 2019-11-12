@@ -37,6 +37,7 @@ const SectionMapper = ({ sections }) => {
             media={section.media}
             type={section.type}
             key={index}
+            videoUrl={section.videoUrl}
             buttonText="hello world"
           />
         )

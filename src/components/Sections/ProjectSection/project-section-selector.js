@@ -27,7 +27,7 @@ const ProjectSectionSelector = (props) => {
 }
 
 ProjectSectionSelector.propTypes = {
-  projectSectionPropTypes,
+  ...projectSectionPropTypes,
   // add one of later
   type: PropTypes.string,
 }

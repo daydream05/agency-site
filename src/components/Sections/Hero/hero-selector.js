@@ -6,8 +6,7 @@ import BottomMediaHero from './bottom-media-hero'
 import heroProptypes from './hero-prop-types'
 
 const HeroSelector = (props) => {
-  const { mainText, subText, media, type, buttonText } = props;
-  console.log('not here', buttonText)
+  const { mainText, subText, media, type, buttonText, videoUrl } = props;
   const showHero = (type) => {
     switch (type) {
       case 'default': {
@@ -17,6 +16,7 @@ const HeroSelector = (props) => {
             subText={subText}
             media={media}
             buttonText={buttonText}
+            videoUrl={videoUrl}
           />
         )
       }
@@ -37,6 +37,7 @@ const HeroSelector = (props) => {
             subText={subText}
             media={media}
             buttonText={buttonText}
+            videoUrl={videoUrl}
           />
         )
     }

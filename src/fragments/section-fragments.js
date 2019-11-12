@@ -5,6 +5,7 @@ export const heroFragment = graphql`
     mainTagline
     secondaryTagline
     type
+    videoUrl
     media {
       id
       title
