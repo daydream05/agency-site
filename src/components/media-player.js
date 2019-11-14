@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { css } from 'styled-components'
 import { DialogOverlay, DialogContent } from "@reach/dialog"
 import VisuallyHidden from '@reach/visually-hidden'

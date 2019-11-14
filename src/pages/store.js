@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { css } from 'theme-ui'
 import Img from 'gatsby-image'
 
@@ -58,40 +58,46 @@ const StoreTemplate = ({ data }) => {
               {products && products.map(({ node }) => {
                 return (
                   <div key={node.id}>
-                    {node.mainPhoto && (
+                    <Link
+                      to={node.fields.path}
+                    >
+                      {node.mainPhoto && (
+                        <div
+                          css={css({
+                            pb: 3,
+                          })}
+                        >
+                          <Img
+                            fluid={node.mainPhoto.fluid}
+                            alt={node.mainPhoto.title}
+                          />
+                        </div>
+                      )}
                       <div
                         css={css({
-                          pb: 3,
+                          display: `grid`,
+                          gridTemplateColumns: `1fr auto`,
+                          gridGap: `${space[3]}px`,
                         })}
                       >
-                        <Img
-                          fluid={node.mainPhoto.fluid}
-                          alt={node.mainPhoto.title}
-                        />
+                        <h5
+                          css={css({
+                            fontSize: 2,
+                            mb: 0,
+                          })}
+                        >
+                          {node.name}
+                        </h5>
+                        <span
+                          css={css({
+                            fontWeight: `bold`,
+                            fontSize: 1,
+                          })}
+                        >
+                          ${node.price}
+                        </span>
                       </div>
-                    )}
-                    <div
-                      css={css({
-                        display: `grid`,
-                        gridTemplateColumns: `1fr auto`,
-                        gridGap: `${space[3]}px`,
-                      })}
-                    >
-                      <h5
-                        css={css({
-                          fontSize: 2,
-                          mb: 0,
-                        })}
-                      >
-                        {node.name}
-                      </h5>
-                      <span
-                        css={css({
-                          fontWeight: `bold`,
-                          fontSize: 1,
-                        })}
-                      >${node.price}</span>
-                    </div>
+                    </Link>
                   </div>
                 )
               })}
@@ -121,6 +127,9 @@ export const query = graphql`
             fluid(maxWidth: 1200 maxHeight: 1200) {
               ...GatsbyContentfulFluid_withWebp
             }
+          }
+          fields {
+            path
           }
         }
       }
