@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import { Waypoint } from 'react-waypoint'
 import { css } from 'theme-ui' 
 
 import SEO from '../components/seo'
-import Layout from '../components/layout'
+import ProductLayout from '../components/product-layout'
 import Container from '../components/container'
 
-import { mediaQueries, space } from "../utils/tokens"
+import { mediaQueries, space, breakpoints, headerHeight } from "../utils/tokens"
 import ProductPageGallery from '../components/product-page-gallery'
 import ProductPageProductInformation from '../components/product-page-product-information'
-import ProductPageGalleryThumbnailList from '../components/product-page-gallery-thumbnail-list'
 
 const ProductTemplate = ({ data }) => {
   const {
@@ -20,7 +18,6 @@ const ProductTemplate = ({ data }) => {
      longDescription
   } = data.contentfulProduct
 
-  const [isGalleryBottom, setIsGalleryBottom] = useState(false)
   const [currentImageId, setCurrentImageId] = useState(0)
 
   console.log(currentImageId)
@@ -28,98 +25,75 @@ const ProductTemplate = ({ data }) => {
   return (
     <>
       <SEO />
-      <Layout>
-        <div>
-          <section>
-            <Container
+      <ProductLayout>
+        <section
+          css={css({
+            py: [headerHeight, headerHeight, headerHeight, 0],
+            [mediaQueries.xxxl]: {
+              height: `100vh`,
+            },
+          })}
+        >
+          <Container
+            css={css({
+              px: [0],
+              maxWidth: breakpoints.xxxl,
+              [mediaQueries.xxxl]: {
+                display: `flex`,
+                flexDirection: `column`,
+                justifyContent: `center`,
+                height: `100%`,
+              },
+            })}
+          >
+            <div
               css={css({
-                px: [4, 4, 5, 6],
+                [mediaQueries.lg]: {
+                  display: `grid`,
+                  gridTemplateColumns: `7fr 5fr`,
+                },
               })}
             >
-              <div
+              <aside
                 css={css({
-                  display: `flex`,
-                  flexDirection: `column`,
+                  mb: 5,
                   [mediaQueries.lg]: {
-                    flexDirection: `row`,
+                    mb: 0,
                   },
                 })}
               >
-                <aside
+                <ProductPageGallery
+                  images={productMedias}
+                  setCurrentImageId={id => {
+                    console.log(id)
+                    setCurrentImageId(id)
+                  }}
+                />
+              </aside>
+              <aside>
+                <div
                   css={css({
-                    width: `100%`,
-                    mb: 5,
+                    px: 4,
                     [mediaQueries.lg]: {
-                      width: `60%`,
-                      mb: 0,
+                      padding: `0 ${space[4]}px`,
+                      display: `flex`,
+                      justifyContent: `center`,
+                      alignItems: `center`,
+                      height: `100%`,
                     },
                   })}
                 >
-                  <ProductPageGalleryThumbnailList
-                    images={productMedias}
-                    currentImageId={currentImageId}
-                    css={css({
-                      [mediaQueries.lg]: {
-                        position: isGalleryBottom ? `absolute` : `fixed`,
-                        top: `auto`,
-                      },
-                    })}
+                  <ProductPageProductInformation
+                    longDescription={longDescription}
+                    price={price}
+                    name={name}
                   />
-                  <ProductPageGallery
-                    images={productMedias}
-                    setCurrentImageId={id => {
-                      console.log(id)
-                      setCurrentImageId(id)
-                    }}
-                  />
-                </aside>
-                <aside
-                  css={css({
-                    [mediaQueries.lg]: {
-                      position: `relative`,
-                      display: `inline-block`,
-                      verticalAlign: `top`,
-                    },
-                  })}
-                >
-                  <div
-                    css={css({
-                      position: `static`,
-                    })}
-                  >
-                    <div
-                      css={css({
-                        [mediaQueries.lg]: {
-                          position: isGalleryBottom ? `absolute` : `fixed`,
-                          padding: `0 ${space[4]}px`,
-                          top: `auto`,
-                          right: `auto`,
-                          bottom: `0`,
-                          width: `40vw`,
-                          mb: 6,
-                        },
-                      })}
-                    >
-                      <ProductPageProductInformation
-                        longDescription={longDescription}
-                        price={price}
-                        name={name}
-                      />
-                    </div>
-                  </div>
-                </aside>
-              </div>
-              <Waypoint
-                onEnter={() => {
-                  console.log(`enter`)
-                  setIsGalleryBottom(true)
-                }}
-                onLeave={() => setIsGalleryBottom(false)}
-              />
-            </Container>
-          </section>
-        </div>
-      </Layout>
+                </div>
+              </aside>
+            </div>
+          </Container>
+        </section>
+      </ProductLayout>
     </>
   )
 }
