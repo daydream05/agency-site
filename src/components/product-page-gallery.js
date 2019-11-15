@@ -12,16 +12,13 @@ const ProductPageGallery = (props) => {
   } = props
 
   return (
-    <div
-      className={props.className}
-    >
+    <div className={props.className}>
       {images &&
         images.map((image, id) => {
-          const isLast = images.length === id + 1
           return (
             <Waypoint
               key={image.id}
-              bottomOffset="50%"
+              bottomOffset="20%"
               onEnter={() => setCurrentImageId(id)}
             >
               <div>
@@ -38,8 +35,7 @@ const ProductPageGallery = (props) => {
               </div>
             </Waypoint>
           )
-        })
-      }
+        })}
     </div>
   )
 }
