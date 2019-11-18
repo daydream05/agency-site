@@ -12,7 +12,9 @@ const ProductPageProductInformation = (props) => {
   } = props
 
   return (
-    <div>
+    <div
+      className={props.className}
+    >
       <h1
         css={css({
           fontSize: [3, 3, 4],

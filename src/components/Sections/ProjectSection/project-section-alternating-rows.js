@@ -1,9 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import styled, { css } from 'styled-components'
 import Img from 'gatsby-image'
-
-import { FaAngleRight } from 'react-icons/fa'
 
 import { fontSizes, mediaQueries, space, letterSpacings, lineHeights } from '../../../utils/tokens'
 

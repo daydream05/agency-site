@@ -2,14 +2,16 @@ import React, { useState} from 'react'
 import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 import { css } from 'theme-ui' 
-import { mediaQueries } from '../utils/tokens'
+import { mediaQueries, colors } from '../utils/tokens'
 
 const ProductPageGallery = (props) => {
   const {
     images,
+    mainPhoto
   } = props
 
-  const initialImage = images && images[0]
+  const initialImage = images ? images[0] : mainPhoto
+
   const [selectedImage, setSelectedImage] = useState(initialImage)
 
   return (
@@ -62,7 +64,8 @@ const ProductPageGallery = (props) => {
             px: 4,
             mt: 3,
             [mediaQueries.lg]: {
-              display: `block`,
+              display: `flex`,
+              flexDirection: `column`,
               px: 0,
               mt: 0,
             },
@@ -80,12 +83,33 @@ const ProductPageGallery = (props) => {
                     opacity: selectedImage.id === image.id ? 1 : 0.5,
                     [mediaQueries.lg]: {
                       mr: 0,
+                      mb: 2,
                     },
                   })}
                 >
-                  <a onClick={() => setSelectedImage(images[id])}>
-                    <Img fixed={image.thumbnail} alt={image.title} />
-                  </a>
+                  <button
+                    onClick={() => setSelectedImage(images[id])}
+                    css={css({
+                      cursor: `pointer`,
+                      border: `none`,
+                      padding: 0,
+                      display: `block`,
+                      boxSizing: `border-box`,
+                      ":focus": {
+                        outline: `2px solid ${colors.accent}`,
+                        outlineOffset: `2px`,
+                        boxSizing: `border-box`,
+                      },
+                    })}
+                  >
+                    <Img
+                      fixed={image.thumbnail}
+                      alt={image.title}
+                      css={css({
+                        display: `block !important`,
+                      })}
+                    />
+                  </button>
                 </li>
               )
             })}

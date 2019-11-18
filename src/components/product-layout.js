@@ -11,7 +11,6 @@ import { ThemeProvider, css } from "styled-components"
 import theme from "../utils/theme"
 
 import Header from "./Header"
-import Footer from "./Footer"
 
 const Layout = ({ children }) => {
   return (
