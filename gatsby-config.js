@@ -33,6 +33,16 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-snipcart`,
+      options: {
+        apiKey: process.env.SNIPCART_API_KEY,
+        autopop: true,
+        js: "https://cdn.snipcart.com/themes/v3.0.0/default/snipcart.js",
+        styles: "https://cdn.snipcart.com/themes/v3.0.0/default/snipcart.css",
+        jQuery: false,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
@@ -50,6 +60,7 @@ module.exports = {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: activeEnv === `development` ? `preview.contentful.com` : ``,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

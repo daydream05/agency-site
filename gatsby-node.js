@@ -30,6 +30,16 @@ exports.onCreateNode = ({ node, actions }) => {
       value: url,
     })
   }
+
+  if(node.internal.type === `ContentfulProduct`) {
+    const url = `/products/${node.slug}/`
+
+    createNodeField({
+      node,
+      name: `path`,
+      value: url,
+    })
+  }
 }
 
 exports.createPages = ({ graphql, actions }) => {
@@ -95,6 +105,36 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve(`./src/templates/page-template.js`),
           context: {
             slug: node.slug,
+          }
+        })
+      })
+      resolve()
+    })
+  })
+
+  const loadProducts = new Promise((resolve, reject) => {
+    graphql(`
+      {
+        allContentfulProduct {
+          edges {
+            node {
+              slug
+              fields {
+                path
+              }
+            }
+          }
+        }
+      }
+    `).then(result => {
+      const products = result.data.allContentfulProduct.edges
+
+      products.map(({ node }) => {
+        createPage({
+          path: node.fields.path,
+          component: path.resolve(`./src/templates/product-template.js`),
+          context: {
+            slug: node.slug 
           }
         })
       })

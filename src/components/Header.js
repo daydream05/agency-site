@@ -1,7 +1,9 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
+import { FaShoppingBag } from 'react-icons/fa'
 import PropTypes from "prop-types"
 import React from "react"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
+import { css } from 'theme-ui'
 
 import {
   headerHeight,
@@ -42,18 +44,19 @@ const Header = () => {
         margin: auto;
       `}
     >
-      <div
+      <ul
         css={css`
           padding: 0 ${space[4]}px;
           display: flex;
           width: 100%;
+          list-style: none;
 
           ${mediaQueries.xl} {
             padding: 0;
           }
         `}
       >
-        <span
+        <li
           css={css`
             flex: 1;
           `}
@@ -64,22 +67,41 @@ const Header = () => {
               font-weight: bold;
             `}
           >
-            Agency
+            instinct pump.
           </Link>
-        </span>
+        </li>
         {filteredLinks.map((link, index) => {
           return (
-            <span
+            <li
               key={index}
               css={css`
                 margin-left: ${space[4]}px;
               `}
             >
               <MenuLink to={`/${link.slug}/`}>{link.title}</MenuLink>
-            </span>
+            </li>
           )
         })}
-      </div>
+        <li
+          css={css({
+            ml: 4,
+            display: `flex`,
+            alignItems: `center`,
+          })}
+        >
+          <button
+            className="snipcart-checkout"
+            css={css({
+              border: `none`,
+              background: `unset`,
+              cursor: `pointer`,
+              position: `relative`,
+            })}
+          >
+            <FaShoppingBag />
+          </button>
+        </li>
+      </ul>
     </header>
   )
 }

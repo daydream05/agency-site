@@ -23,4 +23,9 @@ export const buttonStyles = {
     backgroundColor: colors.black,
   },
   secondary: {},
+  white: {
+    ...buttonInitialStyle,
+    color: colors.black,
+    backgroundColor: colors.white,
+  }
 }
