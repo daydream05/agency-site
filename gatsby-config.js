@@ -33,6 +33,16 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-snipcart`,
+      options: {
+        apiKey: process.env.SNIPCART_API_KEY,
+        autopop: true,
+        js: "https://cdn.snipcart.com/themes/v3.0.0/default/snipcart.js",
+        styles: "https://cdn.snipcart.com/themes/v3.0.0/default/snipcart.css",
+        jQuery: false,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,

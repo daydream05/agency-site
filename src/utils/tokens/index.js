@@ -78,7 +78,7 @@ for (let breakpoint in breakpoints) {
 export { mediaQueries }
 
 export const zIndex = {
-  header: 99,
-  submitFormModal: 100,
-  mediaPlayerModal: 101,
+  header: 8,
+  submitFormModal: 10,
+  mediaPlayerModal: 11,
 }

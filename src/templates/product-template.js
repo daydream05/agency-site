@@ -18,7 +18,8 @@ const ProductTemplate = ({ data }) => {
      productMedias,
      mainPhoto,
      longDescription,
-     id
+     id,
+     fields
   } = data.contentfulProduct
 
   const productIndex = data.allContentfulProduct.edges.find(
@@ -157,6 +158,9 @@ const ProductTemplate = ({ data }) => {
                     longDescription={longDescription}
                     price={price}
                     name={name}
+                    id={id}
+                    url={fields.path}
+                    mainPhoto={mainPhoto}
                   />
                 </div>
               </aside>
@@ -185,6 +189,9 @@ export const query = graphql`
       mainPhoto {
         id
         title
+        file {
+          url
+        }
         fluid(maxWidth: 1200 maxHeight: 1200) {
           ...GatsbyContentfulFluid_withWebp
         }
@@ -195,6 +202,9 @@ export const query = graphql`
       longDescription {
         childMarkdownRemark {
           html
+        }
+        internal {
+          content
         }
       }
       productMedias {
@@ -209,6 +219,9 @@ export const query = graphql`
         thumbnail: fixed(width: 75 height: 75) {
           ...GatsbyContentfulFixed_withWebp
         }
+      }
+      fields {
+        path
       }
     }
     allContentfulProduct {

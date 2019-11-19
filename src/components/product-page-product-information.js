@@ -8,13 +8,14 @@ const ProductPageProductInformation = (props) => {
   const {
     longDescription,
     price,
-    name
+    name,
+    id,
+    url,
+    mainPhoto,
   } = props
 
   return (
-    <div
-      className={props.className}
-    >
+    <div className={props.className}>
       <h1
         css={css({
           fontSize: [3, 3, 4],
@@ -60,8 +61,28 @@ const ProductPageProductInformation = (props) => {
           gridGap: 3,
         })}
       >
-        <Button variant="default">Add to cart</Button>
-        <Button variant="dark">Buy now</Button>
+        <Button
+          variant="default"
+          className="snipcart-add-item snipcart-checkout"
+          data-item-id={id}
+          data-item-price={price}
+          data-item-url={`https://localhost:8000${url}`}
+          data-item-image={mainPhoto.file.url}
+          data-item-name={name}
+        >
+          Add to cart
+        </Button>
+        <Button
+          variant="dark"
+          className="snipcart-add-item snipcart-checkout"
+          data-item-id={id}
+          data-item-price={price}
+          data-item-url={`https://localhost:8000${url}`}
+          data-item-image={mainPhoto.file.url}
+          data-item-name={name}
+        >
+          Buy now
+        </Button>
       </div>
     </div>
   )
