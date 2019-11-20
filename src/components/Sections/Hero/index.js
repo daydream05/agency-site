@@ -6,13 +6,10 @@ import React, { useState } from 'react'
 import Img from 'gatsby-image'
 import styled, { css } from 'styled-components'
 import { Flex } from 'rebass'
-import { FaPlay } from 'react-icons/fa'
-
-import Button from '../../Buttons'
-import MediaPlayer from '../../media-player'
 
 import heroProptypes from './hero-prop-types'
 import { headerHeight, mediaQueries, colors, space, maxWidth, fontSizes } from '../../../utils/tokens'
+import WatchVideoButton from '../../watch-video-button'
 
 const Section = styled.section`
   display: flex;
@@ -71,31 +68,7 @@ const Hero = (props) => {
       >
         <h1 css={css``}>{mainText}</h1>
         <p>{subText}</p>
-        {videoUrl && (
-          <Button
-            variant="default"
-            css={css`
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            `}
-            onClick={() => setDialogShown(true)}
-          >
-            Watch the video
-            <FaPlay
-              css={css`
-                margin-left: ${space[2]}px;
-                font-size: 8px;
-              `}
-            />
-          </Button>
-        )}
-        <MediaPlayer
-          showPlayer={dialogShown}
-          onClose={() => setDialogShown(false)}
-          onDismiss={() => setDialogShown(false)}
-          url={videoUrl}
-        />
+        {videoUrl && <WatchVideoButton url={videoUrl} />}
       </Flex>
       {media && media.fluid && (
         <Img

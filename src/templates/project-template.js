@@ -9,6 +9,8 @@ import Layout from "../components/layout"
 import SectionMapper from "../components/Sections/SectionMapper"
 import SEO from "../components/seo";
 import TagsList from '../components/tags-list'
+import Button from "../components/Buttons"
+import WatchVideoButton from "../components/watch-video-button"
 
 const ProjectTemplate = ({ data }) => {
   const {
@@ -17,6 +19,7 @@ const ProjectTemplate = ({ data }) => {
     tags,
     metaDescription,
     coverPhoto,
+    videoUrl,
     sections,
     shortDescription
   } = data.contentfulProject
@@ -32,15 +35,26 @@ const ProjectTemplate = ({ data }) => {
           display: [``, ``, ``, ``, `grid`],
           gridTemplateColumns: `1fr 1fr`,
           gridColumnGap: 5,
+          gridRowGap: 4,
         })}
       >
-        <h1
-          css={css({
-            pl: [0, 0, 0, 0, 5],
-          })}
-        >
-          {name}
-        </h1>
+        <div>
+          <h1
+            css={css({
+              pl: [0, 0, 0, 0, 5],
+            })}
+          >
+            {name}
+          </h1>
+        </div>
+        {videoUrl && (
+          <WatchVideoButton
+            url={videoUrl}
+            css={css({
+              alignSelf: `center`,
+            })}
+          />
+        )}
         {shortDescription && (
           <div
             css={css({
@@ -49,7 +63,7 @@ const ProjectTemplate = ({ data }) => {
               pl: [0, 0, 0, 0, 5],
             })}
             dangerouslySetInnerHTML={{
-              __html: shortDescription.childMarkdownRemark.html
+              __html: shortDescription.childMarkdownRemark.html,
             }}
           />
         )}
@@ -82,9 +96,7 @@ const ProjectTemplate = ({ data }) => {
             >
               Services provided:
             </span>
-            <TagsList
-              tags={tags}
-            />
+            <TagsList tags={tags} />
           </div>
         </div>
         {coverPhoto && (
@@ -107,6 +119,7 @@ export const query = graphql`
     contentfulProject(slug: { eq: $slug }) {
       name
       client
+      videoUrl
       shortDescription {
         childMarkdownRemark {
           html
