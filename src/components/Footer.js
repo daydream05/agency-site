@@ -16,7 +16,7 @@ const Footer = props => {
   const data = useStaticQuery(footerQuery)
 
   const { tagline } = data.contentfulFooter
-  const { name, email, office } = data.contentfulCompanyInformation
+  const { name, email, office, phoneNumber } = data.contentfulCompanyInformation
 
   return (
     <footer>
@@ -84,19 +84,21 @@ const Footer = props => {
             >
               OFFICE
             </h5>
-            <address
-              css={css`
-                font-style: normal;
-                font-size: ${fontSizes[1]};
-                width: 50%;
+            {office && (
+              <address
+                css={css`
+                  font-style: normal;
+                  font-size: ${fontSizes[1]};
+                  width: 50%;
 
-                ${mediaQueries.lg} {
-                  margin-bottom: 0;
-                }
-              `}
-            >
-              {office.internal.content}
-            </address>
+                  ${mediaQueries.lg} {
+                    margin-bottom: 0;
+                  }
+                `}
+              >
+                {office.internal.content}
+              </address>
+            )}
           </Box>
           <Box
             mb={{
@@ -122,7 +124,7 @@ const Footer = props => {
             >
               {email}
             </a>
-            <a href="tel:1-847-555-5555">+1 900 577 473 84</a>
+            <a href={`tel:${phoneNumber.replace(/\s/g, "")}`}>+{phoneNumber}</a>
           </Box>
         </Flex>
         <div
@@ -177,6 +179,7 @@ const footerQuery = graphql`
     contentfulCompanyInformation {
       name
       email
+      phoneNumber
       office {
         internal {
           content
