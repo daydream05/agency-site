@@ -2,14 +2,16 @@
  * This is the default hero component
  */
 
-import React, { useState } from 'react'
+import React from 'react'
 import Img from 'gatsby-image'
 import styled, { css } from 'styled-components'
 import { Flex } from 'rebass'
 
 import heroProptypes from './hero-prop-types'
-import { headerHeight, mediaQueries, colors, space, maxWidth, fontSizes } from '../../../utils/tokens'
+import { headerHeight, mediaQueries, colors, space, maxWidth } from '../../../utils/tokens'
 import WatchVideoButton from '../../watch-video-button'
+import TrailingHeroText from '../../animated/trailing-hero-text'
+import FadingIn from '../../animated/fading-in'
 
 const Section = styled.section`
   display: flex;
@@ -35,9 +37,8 @@ const Section = styled.section`
 `
 
 const Hero = (props) => {
-  const { mainText, subText, media, buttonText, videoUrl } = props
+  const { mainText, subText, media, videoUrl } = props
 
-  const [dialogShown, setDialogShown] = useState(false)
   return (
     <Section>
       <Flex
@@ -66,36 +67,46 @@ const Hero = (props) => {
           }
         `}
       >
-        <h1 css={css``}>{mainText}</h1>
-        <p>{subText}</p>
-        {videoUrl && <WatchVideoButton url={videoUrl} />}
+        <h1>
+          <TrailingHeroText text={mainText} />
+        </h1>
+        <FadingIn delay={1100}>
+          <p>{subText}</p>
+        </FadingIn>
+        {videoUrl && (
+          <FadingIn delay={1300}>
+            <WatchVideoButton url={videoUrl} />
+          </FadingIn>
+        )}
       </Flex>
       {media && media.fluid && (
-        <Img
-          fluid={media.fluid}
-          alt={media.title}
-          css={css`
-            position: absolute !important;
-            width: 100%;
-            height: 100%;
-            position: relative;
-
-            ${mediaQueries.lg} {
-              position: relative !important;
-              grid-column: 2;
-            }
-
-            &::after {
-              content: "";
-              position: absolute;
+        <FadingIn>
+          <Img
+            fluid={media.fluid}
+            alt={media.title}
+            css={css`
+              position: absolute !important;
               width: 100%;
               height: 100%;
-              top: 0;
-              background-color: ${colors.black};
-              opacity: 0.2;
-            }
-          `}
-        />
+              position: relative;
+
+              ${mediaQueries.lg} {
+                position: relative !important;
+                grid-column: 2;
+              }
+
+              &::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                background-color: ${colors.black};
+                opacity: 0.2;
+              }
+            `}
+          />
+        </FadingIn>
       )}
     </Section>
   )
