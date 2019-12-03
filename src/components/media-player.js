@@ -14,7 +14,6 @@ const MediaPlayer = (props) => {
     <DialogOverlay
       isOpen={showPlayer}
       onDismiss={() => {
-        console.log("it worked")
         onDismiss()
       }}
       css={css({

@@ -3,7 +3,6 @@ import FeatureAlternatingRows from './feature-alternating-rows'
 
 const FeatureSectionSelector = (props) => {
   const { featuresList, type } = props
-  console.log(featuresList)
 
   const showSection = (type) => {
     switch(type) {

@@ -21,8 +21,6 @@ const CardTitle = styled.h2`
 const ProjectCard = (props) => {
   const { name, client, tags, media, number, url } = props
 
-  console.log(`what is this`, url)
-
   return (
     <ProjectCardRoot>
       <div css={css`
