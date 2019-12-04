@@ -88,7 +88,10 @@ const Hero = (props) => {
         )}
       </Flex>
       {media && media.fluid && (
-        <FadingIn>
+        <FadingIn css={css({
+          width: `100%`,
+          height: `100%`,
+        })}>
           <Img
             fluid={media.fluid}
             alt={media.title}

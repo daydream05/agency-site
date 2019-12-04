@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSpring, a, config } from 'react-spring'
 
-const FadingInText = ({ children, delay }) => {
+const FadingInText = ({ children, delay, className }) => {
   const [toggle, set] = useState(false)
 
   useEffect(() => {
@@ -10,13 +10,15 @@ const FadingInText = ({ children, delay }) => {
 
   const animation = useSpring({
     config: config.molasses,
-    opacity: toggle ? 1: 0,
+    opacity: toggle ? 1 : 0,
     delay: delay || 0,
-    from: { opacity: 0 }
+    from: { opacity: 0 },
   })
 
   return (
-    <a.div style={animation}>{children}</a.div>
+    <a.div style={animation} className={className}>
+      {children}
+    </a.div>
   )
 }
 
