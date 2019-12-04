@@ -2,7 +2,7 @@
  * This is the default hero component
  */
 
-import React from 'react'
+import React, { useRef } from 'react'
 import Img from 'gatsby-image'
 import styled, { css } from 'styled-components'
 import { Flex } from 'rebass'
@@ -11,7 +11,9 @@ import heroProptypes from './hero-prop-types'
 import { headerHeight, mediaQueries, colors, space, maxWidth } from '../../../utils/tokens'
 import WatchVideoButton from '../../watch-video-button'
 import TrailingHeroText from '../../animated/trailing-hero-text'
+import MatrixAnimation from '../../animated/matrix-animation'
 import FadingIn from '../../animated/fading-in'
+import FadeInChain from '../../animated/fade-in-word-by-word'
 
 const Section = styled.section`
   display: flex;
@@ -70,11 +72,17 @@ const Hero = (props) => {
         <h1>
           <TrailingHeroText text={mainText} />
         </h1>
-        <FadingIn delay={1100}>
-          <p>{subText}</p>
-        </FadingIn>
+        <p>
+          <FadeInChain
+            toggle
+            items={subText.split(" ").map((word) => `${word} `)}
+            configs={{
+              delay: 1100,
+            }}
+          />
+        </p>
         {videoUrl && (
-          <FadingIn delay={1300}>
+          <FadingIn>
             <WatchVideoButton url={videoUrl} />
           </FadingIn>
         )}
