@@ -13,7 +13,7 @@ import WatchVideoButton from '../../watch-video-button'
 import TrailingHeroText from '../../animated/trailing-hero-text'
 import MatrixAnimation from '../../animated/matrix-animation'
 import FadingIn from '../../animated/fading-in'
-import FadeInChain from '../../animated/fade-in-word-by-word'
+import FadeInWordByWord from "../../animated/fade-in-word-by-word"
 
 const Section = styled.section`
   display: flex;
@@ -73,25 +73,31 @@ const Hero = (props) => {
           <TrailingHeroText text={mainText} />
         </h1>
         <p>
-          <FadeInChain
+          <FadeInWordByWord
             toggle
-            items={subText.split(" ").map((word) => `${word} `)}
+            text={subText}
             configs={{
-              delay: 1100,
+              delay: 1200,
             }}
           />
         </p>
         {videoUrl && (
-          <FadingIn>
+          <FadingIn
+            configs={{
+              delay: 2200,
+            }}
+          >
             <WatchVideoButton url={videoUrl} />
           </FadingIn>
         )}
       </Flex>
       {media && media.fluid && (
-        <FadingIn css={css({
-          width: `100%`,
-          height: `100%`,
-        })}>
+        <FadingIn
+          css={css({
+            width: `100%`,
+            height: `100%`,
+          })}
+        >
           <Img
             fluid={media.fluid}
             alt={media.title}

@@ -1,24 +1,30 @@
 import React from 'react'
-import { a, useTransition } from 'react-spring'
+import { a, useTransition, useTrail } from 'react-spring'
 
-const FadeInWordByWord = ({ items, configs, toggle }) => {
+const config = { mass: 5, tension: 1250, friction: 200 }
 
-  const transitions = useTransition(toggle ? items : [], null, {
-    trail: 1000 / items.length,
+const FadeInWordByWord = ({ text, configs, toggle }) => {
+
+  const textList = text.split(" ")
+
+  const trail = useTrail(textList.length, {
+    config,
+    opacity: toggle ? 1: 0,
     from: { opacity: 0 },
-    enter: { opacity: 1 },
+    ...configs,
   })
 
   return (
-    <a.div>
-      {transitions.map(({ item, key, props }) => {
-          return (
-            <a.span key={key} style={{ ...props }}>
-              {item}
-            </a.span>
-          )
-        })}
-    </a.div>
+    <>
+      {trail.map((prop, index) => {
+        return (
+          <a.span
+            key={index}
+            style={prop}
+          >{`${textList[index]} `}</a.span>
+        )
+      })}
+    </>
   )
 }
 
