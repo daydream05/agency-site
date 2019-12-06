@@ -12,6 +12,7 @@ import theme from "../utils/theme"
 
 import Header from "./Header"
 import Footer from "./Footer"
+import MobileMenu from "./mobile-menu"
 
 const Layout = ({ children }) => {
   return (
@@ -25,6 +26,7 @@ const Layout = ({ children }) => {
         `}
       >
         <Header />
+        <MobileMenu />
         <main
           css={css`
             flex: 1;

@@ -30,18 +30,21 @@ const Header = () => {
   return (
     <header
       css={css`
-        display: flex;
-        align-items: center;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: ${headerHeight};
-        width: 100%;
-        z-index: ${zIndex.header};
+        display: none;
+        ${mediaQueries.lg} {
+          display: flex;
+          align-items: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: ${headerHeight};
+          width: 100%;
+          z-index: ${zIndex.header};
 
-        max-width: ${maxWidth.xl};
-        margin: auto;
+          max-width: ${maxWidth.xl};
+          margin: auto;
+        }
       `}
     >
       <ul

@@ -81,4 +81,7 @@ export const zIndex = {
   header: 8,
   submitFormModal: 10,
   mediaPlayerModal: 11,
+  burger: 100,
+  panel: 99,
+  mobileMenu: 101,
 }
