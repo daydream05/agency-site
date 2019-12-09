@@ -11,8 +11,6 @@ const TwoColumnTextSection = (props) => {
 
   const [animate, setAnimate] = useState(false)
 
-  console.log(animate)
-
   return (
     <Section
       px={{

@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useTrail, a } from 'react-spring'
 
-import { fontSizes, mediaQueries } from '../../utils/tokens'
+import { fontSizes } from '../../utils/tokens'
+
+import "./trailing-hero-text.css"
 
 const config = { mass: 5, tension: 1250, friction: 200 }
+
 
 const textStyle = {
   position: `relative`,
@@ -13,9 +16,6 @@ const textStyle = {
   lineHeight: 0.8,
   willChange: `transform, opacity`,
   overflow: `hidden`,
-  [mediaQueries.lg]: {
-    height: fontSizes[6],
-  },
 }
 
 const TrailingHeroText = (props) => {
@@ -49,6 +49,7 @@ const TrailingHeroText = (props) => {
               transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
               ...textStyle,
             }}
+            className="trailing-hero-text"
           >
             <a.span
               style={{ height, overflow: `hidden`, display: `block` }}
