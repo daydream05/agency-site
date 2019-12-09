@@ -172,16 +172,27 @@ const MobileMenu = (props) => {
         top: 0,
         left: 0,
         width: `100%`,
-        height: `100vh`,
         padding: `${space[4]}px`,
         display: `flex`,
-        justifyContent: `flex-end`,
+        justifyContent: `space-between`,
         zIndex: open ? zIndex.mobileMenu : 1,
         [mediaQueries.lg]: {
           display: `none`,
-        }
+        },
       })}
     >
+      <div>
+        <Link to="/">
+          <span
+            css={css({
+              fontWeight: `bold`,
+              color: props.dark ? colors.black : colors.white,
+            })}
+          >
+            instinct pump.
+          </span>
+        </Link>
+      </div>
       <Burger dark={props.dark} toggle={open} onClick={() => setOpen(!open)} />
       <Panel toggle={open} />
     </div>

@@ -11,8 +11,9 @@ import { ThemeProvider, css } from "styled-components"
 import theme from "../utils/theme"
 
 import Header from "./Header"
+import MobileMenu from "./mobile-menu"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, darkMobileMenu }) => {
   return (
     <ThemeProvider theme={theme}>
       <div
@@ -24,6 +25,7 @@ const Layout = ({ children }) => {
         `}
       >
         <Header />
+        <MobileMenu dark={darkMobileMenu} />
         <main
           css={css`
             flex: 1;

@@ -29,7 +29,7 @@ const ProductTemplate = ({ data }) => {
   return (
     <>
       <SEO />
-      <ProductLayout>
+      <ProductLayout darkMobileMenu>
         <section
           css={css({
             py: [headerHeight, headerHeight, headerHeight, headerHeight, 0],

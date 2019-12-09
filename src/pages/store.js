@@ -23,7 +23,7 @@ const StoreTemplate = ({ data }) => {
         description={metaDescription && metaDescription.internal.content}
         title={metaTitle || title}
       />
-      <Layout>
+      <Layout darkMobileMenu>
         <div
           css={css({
             pt: headerHeight,

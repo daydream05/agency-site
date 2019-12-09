@@ -8,6 +8,8 @@ import SEO from '../components/seo'
 const PageTemplate = ({ data, location }) => {
   const { title, metaDescription, metaTitle, sections } = data.contentfulPage
 
+  console.log(location.pathname)
+  
   const pagesWithLightBackground = [`/about/`, `/store/`]
   let darkMobileMenu = false
   if(pagesWithLightBackground.includes(location.pathname)) {

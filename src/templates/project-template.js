@@ -24,7 +24,7 @@ const ProjectTemplate = ({ data }) => {
     shortDescription
   } = data.contentfulProject
   return (
-    <Layout>
+    <Layout darkMobileMenu>
       <SEO description={metaDescription} title={name} />
       <div
         css={css({
