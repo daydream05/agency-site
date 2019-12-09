@@ -77,14 +77,14 @@ const Hero = (props) => {
             toggle
             text={subText}
             configs={{
-              delay: 1200,
+              delay: 1500,
             }}
           />
         </p>
         {videoUrl && (
           <FadingIn
             configs={{
-              delay: 2200,
+              delay: 3000,
             }}
           >
             <WatchVideoButton url={videoUrl} />

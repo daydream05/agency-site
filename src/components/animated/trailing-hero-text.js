@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useTrail, a } from 'react-spring'
 
-import { fontSizes } from '../../utils/tokens'
+import { fontSizes, mediaQueries } from '../../utils/tokens'
 
 const config = { mass: 5, tension: 1250, friction: 200 }
 
 const textStyle = {
   position: `relative`,
   width: `100%`,
-  height: fontSizes[6],
+  height: `calc(${fontSizes[5]} + ${fontSizes[2]})`,
   lineHeight: 0.8,
   willChange: `transform, opacity`,
   overflow: `hidden`,
+  [mediaQueries.lg]: {
+    height: fontSizes[6],
+  },
 }
 
 const TrailingHeroText = (props) => {

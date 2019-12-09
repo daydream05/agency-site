@@ -14,7 +14,7 @@ import Header from "./Header"
 import Footer from "./Footer"
 import MobileMenu from "./mobile-menu"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, darkMobileMenu }) => {
   return (
     <ThemeProvider theme={theme}>
       <div
@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
         `}
       >
         <Header />
-        <MobileMenu />
+        <MobileMenu dark={darkMobileMenu}/>
         <main
           css={css`
             flex: 1;

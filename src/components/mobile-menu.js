@@ -6,13 +6,13 @@ import { useSpring, useTransition, a, config, interpolate, useChain } from 'reac
 import { space, colors, zIndex, fontSizes, mediaQueries } from '../utils/tokens'
 
 const Burger = (props) => {
-  const { toggle, onClick } = props
+  const { toggle, onClick, dark } = props
 
   const lineStyle = {
     display: `block`,
     width: `100%`,
     height: `3px`,
-    backgroundColor: colors.white,
+    backgroundColor: dark ? (toggle ? colors.white : colors.black)  : colors.white,
     borderRadius: `6px,`,
   }
 
@@ -91,8 +91,11 @@ const Panel = ({ toggle }) => {
   const springAnimate = useSpring({
     ref: springRef,
     config: config.stiff,
-    from: { opacity: 0 },
-    to: { opacity: toggle ? 1 : 0 },
+    from: { opacity: 0, display: `none` },
+    to: {
+      opacity: toggle ? 1 : 0,
+      display: toggle ? `flex` : `none`,
+    },
   })
 
   const data = useStaticQuery(menuQuery)
@@ -160,7 +163,7 @@ const menuQuery = graphql`
   }
 `
 
-const MobileMenu = () => {
+const MobileMenu = (props) => {
   const [open, setOpen] = useState(false)
   return (
     <div
@@ -173,13 +176,13 @@ const MobileMenu = () => {
         padding: `${space[4]}px`,
         display: `flex`,
         justifyContent: `flex-end`,
-        zIndex: zIndex.mobileMenu,
+        zIndex: open ? zIndex.mobileMenu : 1,
         [mediaQueries.lg]: {
           display: `none`,
         }
       })}
     >
-      <Burger toggle={open} onClick={() => setOpen(!open)} />
+      <Burger dark={props.dark} toggle={open} onClick={() => setOpen(!open)} />
       <Panel toggle={open} />
     </div>
   )

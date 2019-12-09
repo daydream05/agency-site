@@ -5,8 +5,14 @@ import Layout from "../components/layout"
 import SectionMapper from "../components/Sections/SectionMapper"
 import SEO from '../components/seo'
 
-const PageTemplate = ({ data }) => {
+const PageTemplate = ({ data, location }) => {
   const { title, metaDescription, metaTitle, sections } = data.contentfulPage
+
+  const pagesWithLightBackground = [`/about/`, `/store/`]
+  let darkMobileMenu = false
+  if(pagesWithLightBackground.includes(location.pathname)) {
+    darkMobileMenu = true
+  }
   
   return (
     <>
@@ -14,7 +20,7 @@ const PageTemplate = ({ data }) => {
         description={metaDescription.internal.content}
         title={metaTitle || title}
       />
-      <Layout>{sections && <SectionMapper sections={sections} />}</Layout>
+      <Layout darkMobileMenu={darkMobileMenu}>{sections && <SectionMapper sections={sections} />}</Layout>
     </>
   )
 }
