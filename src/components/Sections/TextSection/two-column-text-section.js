@@ -50,6 +50,7 @@ const TwoColumnTextSection = (props) => {
           >
             <h4>{mainText}</h4>
           </MatrixAnimation>
+          <Waypoint onEnter={() => setAnimate(true)} topOffset="-20%" />
         </div>
         <div>
           <div
@@ -70,7 +71,6 @@ const TwoColumnTextSection = (props) => {
           />
         </div>
       </div>
-      <Waypoint onEnter={() => setAnimate(true)} />
     </Section>
   )
 }
