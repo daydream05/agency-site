@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import { css } from 'styled-components'
 import { Waypoint } from 'react-waypoint'
-import { config } from 'react-spring'
 import { space, mediaQueries, fontSizes, lineHeights, letterSpacings } from '../../../utils/tokens'
 
 import { Section } from '../../StyledComponents'
 import MatrixAnimation from '../../animated/matrix-animation'
 import FadeInWordByWord from '../../animated/fade-in-word-by-word'
-import FadeInText from '../../animated/fading-in'
 
 const TwoColumnTextSection = (props) => {
   const { mainText, title, body } = props
