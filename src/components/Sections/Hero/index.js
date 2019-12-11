@@ -85,6 +85,7 @@ const Hero = (props) => {
             configs={{
               delay: 3000,
             }}
+            toggle
           >
             <WatchVideoButton url={videoUrl} />
           </FadingIn>
@@ -96,6 +97,7 @@ const Hero = (props) => {
             width: `100%`,
             height: `100%`,
           })}
+          toggle
         >
           <Img
             fluid={media.fluid}

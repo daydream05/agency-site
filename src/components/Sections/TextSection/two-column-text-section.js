@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { css } from 'styled-components'
 import { Waypoint } from 'react-waypoint'
+import { config } from 'react-spring'
 import { space, mediaQueries, fontSizes, lineHeights, letterSpacings } from '../../../utils/tokens'
 
 import { Section } from '../../StyledComponents'
 import MatrixAnimation from '../../animated/matrix-animation'
+import FadeInWordByWord from '../../animated/fade-in-word-by-word'
+import FadeInText from '../../animated/fading-in'
 
 const TwoColumnTextSection = (props) => {
   const { mainText, title, body } = props
@@ -40,16 +43,18 @@ const TwoColumnTextSection = (props) => {
               letter-spacing: ${letterSpacings.normal};
             `}
           >
-            {title}
+            <FadeInWordByWord text={title} toggle={animate} />
           </h2>
-          <MatrixAnimation
-            toggle={animate}
-            configs={{
-              delay: 300,
-            }}
-          >
-            <h4>{mainText}</h4>
-          </MatrixAnimation>
+            <h4>
+              <MatrixAnimation
+                toggle={animate}
+                configs={{
+                  delay: 300,
+                }}
+              >
+                {mainText}
+              </MatrixAnimation>
+            </h4>
           <Waypoint onEnter={() => setAnimate(true)} topOffset="-20%" />
         </div>
         <div>
