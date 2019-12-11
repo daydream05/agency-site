@@ -90,6 +90,7 @@ const ContactSection = (props) => {
               title="facebook"
               target="_blank"
               rel="noopener noreferrer"
+              href="https://fb.com"
               css={css`
                 color: ${colors.white};
               `}
@@ -100,6 +101,7 @@ const ContactSection = (props) => {
               title="instagram"
               target="_blank"
               rel="noopener noreferrer"
+              href="https://instagram.com"
               css={css`
                 color: ${colors.white};
               `}
@@ -110,6 +112,7 @@ const ContactSection = (props) => {
               title="twitter"
               target="_blank"
               rel="noopener noreferrer"
+              href="https://twitter.com"
               css={css`
                 color: ${colors.white};
               `}

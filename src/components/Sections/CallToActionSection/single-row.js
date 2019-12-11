@@ -12,9 +12,7 @@ const SingleRow = (props) => {
   const {
     tagline,
     subTagline,
-    backgroundColor,
     buttonText,
-    fields,
   } = props
 
   const data = useStaticQuery(query)

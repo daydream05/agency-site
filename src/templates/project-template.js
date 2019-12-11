@@ -9,7 +9,6 @@ import Layout from "../components/layout"
 import SectionMapper from "../components/Sections/SectionMapper"
 import SEO from "../components/seo";
 import TagsList from '../components/tags-list'
-import Button from "../components/Buttons"
 import WatchVideoButton from "../components/watch-video-button"
 
 const ProjectTemplate = ({ data }) => {

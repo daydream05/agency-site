@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import Img from 'gatsby-image'
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs"
 
-import { mediaQueries, space, fontSizes, maxWidth, colors } from '../../../utils/tokens'
+import { mediaQueries, space, fontSizes, colors } from '../../../utils/tokens'
 
 const Number = styled.span`
   font-weight: bold;

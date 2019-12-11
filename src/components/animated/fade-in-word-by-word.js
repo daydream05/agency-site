@@ -1,5 +1,5 @@
 import React from 'react'
-import { a, useTransition, useTrail } from 'react-spring'
+import { a, useTrail } from 'react-spring'
 
 const config = { mass: 5, tension: 1250, friction: 200 }
 
