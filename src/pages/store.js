@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import { graphql, Link } from 'gatsby'
+import { useTrail, a } from 'react-spring'
 import { css } from 'theme-ui'
 import Img from 'gatsby-image'
 
@@ -16,6 +17,18 @@ const StoreTemplate = ({ data }) => {
   } = data.contentfulPage
 
   const products = data.allContentfulProduct.edges
+
+  const [toggle, set] = useState(false)
+
+  useEffect(() => {
+    set(true)
+  }, [])
+
+  const trail = useTrail(products.length, {
+    opacity: toggle ? 1 : 0,
+    y: toggle ? 0 : 20,
+    from: { opacity: 0, y: 50 }
+  })
   
   return (
     <>
@@ -48,6 +61,7 @@ const StoreTemplate = ({ data }) => {
                 display: `grid`,
                 gridTemplateColumns: `1fr 1fr`,
                 flex: 1,
+                overflow: `hidden`,
                 [mediaQueries.lg]: {
                   gridTemplateColumns: `repeat(${products.length},1fr)`,
                   gridAutoRows: `100%`,
@@ -55,9 +69,16 @@ const StoreTemplate = ({ data }) => {
               })}
             >
               {products &&
-                products.map(({ node }) => {
+                trail.map(({ y, ...rest }, index) => {
+                  const { node } = products[index]
                   return (
-                    <div key={node.id}>
+                    <a.div
+                      key={node.id}
+                      style={{
+                        transform: y.interpolate(y => `translate3d(0, -${y}%, 0)`),
+                        ...rest
+                      }}
+                    >
                       <Link to={node.fields.path}>
                         <div
                           css={css({
@@ -78,7 +99,7 @@ const StoreTemplate = ({ data }) => {
                           )}
                         </div>
                       </Link>
-                    </div>
+                    </a.div>
                   )
                 })}
             </section>
