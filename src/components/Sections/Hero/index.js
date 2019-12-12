@@ -83,7 +83,7 @@ const Hero = (props) => {
         {videoUrl && (
           <FadingIn
             configs={{
-              delay: 3000,
+              delay: 2500,
             }}
             toggle
           >
