@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, Link, navigate } from 'gatsby'
+import { useSpring, useChain, a } from 'react-spring'
 import { css } from 'theme-ui'
 import { FaLongArrowAltLeft, FaAngleLeft, FaAngleRight } from "react-icons/fa"
 
@@ -7,11 +8,11 @@ import SEO from '../components/seo'
 import ProductLayout from '../components/product-layout'
 import Container from '../components/container'
 
-import { mediaQueries, space, breakpoints, headerHeight } from "../utils/tokens"
+import { mediaQueries, space, breakpoints, headerHeight, colors } from "../utils/tokens"
 import ProductPageGallery from '../components/product-page-gallery'
 import ProductPageProductInformation from '../components/product-page-product-information'
 
-const ProductTemplate = ({ data }) => {
+const ProductTemplate = ({ data, location }) => {
   const {
      name,
      price,
@@ -26,9 +27,20 @@ const ProductTemplate = ({ data }) => {
     ({ node: product }) => product.id === id
   )
 
+  const toggle = location.state && location.state.animate
+
+  const fadeIn = useSpring({
+    opacity: toggle ? 1 : 0,
+    x: toggle ? 0 : 20,
+    from: {
+      opacity: 0,
+      x: 20,
+    },
+  })
+
   return (
     <>
-      <SEO />
+      <SEO title={name} />
       <ProductLayout darkMobileMenu>
         <section
           css={css({
@@ -70,6 +82,8 @@ const ProductTemplate = ({ data }) => {
                 <ProductPageGallery
                   images={productMedias}
                   mainPhoto={mainPhoto}
+                  startingStyle={location.state && location.state.startingStyle}
+                  toggle={location.state && location.state.animate}
                 />
               </aside>
               <aside
@@ -77,92 +91,98 @@ const ProductTemplate = ({ data }) => {
                   position: `relative`,
                   [mediaQueries.lg]: {
                     mt: headerHeight,
+                    overflow: `hidden`,
                   },
                 })}
               >
-                <div
-                  css={css({
-                    display: `flex`,
-                    flexDirection: `column-reverse`,
-                    px: 4,
-                    [mediaQueries.lg]: {
-                      padding: `0 ${space[4]}px`,
-                      flexDirection: `column`,
-                      height: `100%`,
-                    },
-                  })}
-                >
+                <a.div style={{
+                  opacity: toggle ? fadeIn.opacity : null,
+                  transform: toggle ? fadeIn.x.interpolate(x => `translate3d(0,-${x}px, 0)`) : null,
+                }}>
                   <div
                     css={css({
                       display: `flex`,
-                      justifyContent: `space-between`,
-                      mt: [5, 5, 5, 5, 0],
-                      mb: [0, 0, 0, 0, 5],
+                      flexDirection: `column-reverse`,
+                      px: 4,
+                      [mediaQueries.lg]: {
+                        padding: `0 ${space[4]}px`,
+                        flexDirection: `column`,
+                        height: `100%`,
+                      },
                     })}
                   >
-                    <Link
-                      to="/store/"
-                      css={css({
-                        display: `flex`,
-                        alignItems: `center`,
-                      })}
-                    >
-                      <FaLongArrowAltLeft />
-                      <span
-                        css={css({
-                          ml: 2,
-                        })}
-                      >
-                        Back to product list
-                      </span>
-                    </Link>
                     <div
                       css={css({
                         display: `flex`,
-                        justifyContent: productIndex.previous
-                          ? `space-between`
-                          : `flex-end`,
+                        justifyContent: `space-between`,
+                        mt: [5, 5, 5, 5, 0],
+                        mb: [0, 0, 0, 0, 5],
                       })}
                     >
-                      <button
-                        onClick={() => {
-                          productIndex.previous &&
-                            navigate(productIndex.previous.fields.path)
+                      <Link
+                        to="/store/"
+                        style={{
+                          display: `flex`,
+                          alignItems: `center`,
                         }}
-                        disabled={!productIndex.previous}
-                        css={css(buttonArrowStyle)}
                       >
-                        <FaAngleLeft
-                          css={css({
-                            mr: 2,
-                          })}
-                        />
-                      </button>
-                      <button
-                        onClick={() => {
-                          productIndex.next &&
-                            navigate(productIndex.next.fields.path)
-                        }}
-                        disabled={!productIndex.next}
-                        css={css(buttonArrowStyle)}
-                      >
-                        <FaAngleRight
+                        <FaLongArrowAltLeft />
+                        <span
                           css={css({
                             ml: 2,
                           })}
-                        />
-                      </button>
+                        >
+                          Back to product list
+                        </span>
+                      </Link>
+                      <div
+                        css={css({
+                          display: `flex`,
+                          justifyContent: productIndex.previous
+                            ? `space-between`
+                            : `flex-end`,
+                        })}
+                      >
+                        <button
+                          onClick={() => {
+                            productIndex.previous &&
+                              navigate(productIndex.previous.fields.path)
+                          }}
+                          disabled={!productIndex.previous}
+                          css={css(buttonArrowStyle)}
+                        >
+                          <FaAngleLeft
+                            style={{
+                              marginRight: `${space[2]}px`,
+                            }}
+                          />
+                        </button>
+                        <button
+                          onClick={() => {
+                            productIndex.next &&
+                              navigate(productIndex.next.fields.path)
+                          }}
+                          disabled={!productIndex.next}
+                          css={css(buttonArrowStyle)}
+                        >
+                          <FaAngleRight
+                            style={{
+                              marginLeft: `${space[2]}px`,
+                            }}
+                          />
+                        </button>
+                      </div>
                     </div>
+                    <ProductPageProductInformation
+                      longDescription={longDescription}
+                      price={price}
+                      name={name}
+                      id={id}
+                      url={fields.path}
+                      mainPhoto={mainPhoto}
+                    />
                   </div>
-                  <ProductPageProductInformation
-                    longDescription={longDescription}
-                    price={price}
-                    name={name}
-                    id={id}
-                    url={fields.path}
-                    mainPhoto={mainPhoto}
-                  />
-                </div>
+                </a.div>
               </aside>
             </div>
           </Container>
@@ -193,7 +213,7 @@ export const query = graphql`
           url
         }
         fluid(maxWidth: 1200 maxHeight: 1200) {
-          ...GatsbyContentfulFluid_withWebp
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
         thumbnail: fixed(width: 75 height: 75) {
           ...GatsbyContentfulFixed_withWebp

@@ -92,6 +92,6 @@ export default ProductPageProductInformation
 
 ProductPageProductInformation.propTypes = {
   longDescription: PropTypes.object,
-  price: PropTypes.string,
-  name: PropTypes.number,
+  price: PropTypes.number,
+  name: PropTypes.string,
 }

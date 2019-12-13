@@ -1,6 +1,5 @@
-import React, { useState, useEffect} from 'react'
-import { graphql, Link } from 'gatsby'
-import { useTrail, a } from 'react-spring'
+import React, { useEffect, useRef } from 'react'
+import { graphql, Link, navigate } from 'gatsby'
 import { css } from 'theme-ui'
 import Img from 'gatsby-image'
 
@@ -9,7 +8,7 @@ import Layout from '../components/layout'
 
 import { headerHeight, maxWidth, mediaQueries } from '../utils/tokens'
 
-const StoreTemplate = ({ data }) => {
+const StoreTemplate = ({ data, location }) => {
   const {
     metaDescription,
     metaTitle,
@@ -18,17 +17,27 @@ const StoreTemplate = ({ data }) => {
 
   const products = data.allContentfulProduct.edges
 
-  const [toggle, set] = useState(false)
+  const imagesRef = useRef([])
 
   useEffect(() => {
-    set(true)
-  }, [])
+    imagesRef.current = imagesRef.current.slice(0, products.length)
+  }, [products])
 
-  const trail = useTrail(products.length, {
-    opacity: toggle ? 1 : 0,
-    y: toggle ? 0 : 20,
-    from: { opacity: 0, y: 50 }
-  })
+  const onClick = (index, path) => {
+    const {
+      width, height, top, left
+    } = imagesRef.current[index].getBoundingClientRect()
+
+    const startingStyle = {
+      width, height, top, left
+    }
+    navigate(path, {
+      state: {
+        startingStyle,
+        animate: true,
+      },
+    })
+  }
   
   return (
     <>
@@ -69,22 +78,27 @@ const StoreTemplate = ({ data }) => {
               })}
             >
               {products &&
-                trail.map(({ y, ...rest }, index) => {
-                  const { node } = products[index]
+                products.map(({ node }, index) => {
                   return (
-                    <a.div
+                    <div
                       key={node.id}
-                      style={{
-                        transform: y.interpolate(y => `translate3d(0, -${y}%, 0)`),
-                        ...rest
-                      }}
                     >
-                      <Link to={node.fields.path}>
+                      <div
+                        onClick={() => onClick(index, node.fields.path)}
+                        role="link"
+                        tabIndex="0"
+                        css={css({
+                          height: `100%`,
+                          cursor: `pointer`,
+                        })}
+                      >
                         <div
                           css={css({
                             position: `relative`,
                             height: `100%`,
+                            width: `100%`,
                           })}
+                          ref={el => imagesRef.current[index] = el}
                         >
                           {node.mainPhoto && (
                             <Img
@@ -98,8 +112,8 @@ const StoreTemplate = ({ data }) => {
                             />
                           )}
                         </div>
-                      </Link>
-                    </a.div>
+                      </div>
+                    </div>
                   )
                 })}
             </section>
