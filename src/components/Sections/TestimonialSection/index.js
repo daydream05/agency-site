@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import Img from 'gatsby-image'
+import { Waypoint } from 'react-waypoint'
 
 import { colors, space, lineHeights, fontSizes, mediaQueries, maxWidth } from '../../../utils/tokens'
 
 import { Section } from '../../StyledComponents'
+import FadeInWordByWord from "../../animated/fade-in-word-by-word"
 
 const CardRoot = styled.div`
   padding: ${space[5]}px;
@@ -26,10 +28,20 @@ const ReviewerContainer = styled.div`
 `
 const TestimonialCard = (props) => {
   const { name, message, jobTitle, photo } = props
+
+  const [toggle, set] = useState(false)
   
   return (
     <CardRoot>
-      <Message>"{message}"</Message>
+      <Message>
+        <FadeInWordByWord
+          text={`"${message}"`}
+          toggle={toggle}
+        />
+      </Message>
+      <Waypoint
+        onEnter={() => set(true)}
+      />
       <ReviewerContainer>
         {photo &&
           <Img
