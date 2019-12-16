@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { graphql, Link, navigate } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import { css } from 'theme-ui'
 import Img from 'gatsby-image'
 
@@ -8,7 +8,7 @@ import Layout from '../components/layout'
 
 import { headerHeight, maxWidth, mediaQueries } from '../utils/tokens'
 
-const StoreTemplate = ({ data, location }) => {
+const StoreTemplate = ({ data }) => {
   const {
     metaDescription,
     metaTitle,

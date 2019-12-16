@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { useSpring, a } from 'react-spring'
 import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
@@ -62,8 +62,6 @@ const ProductPageGallery = (props) => {
     width: vwToPixel(endingStyle.width),
     height: vhToPixel(endingStyle.height),
   }
-
-  console.log(initialStyle)
 
   const animatedSpring = useSpring({
     height: toggle ? vhToPixel(endingStyle.height) : initialStyle.height,
