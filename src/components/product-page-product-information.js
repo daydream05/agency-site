@@ -4,6 +4,8 @@ import { css } from 'theme-ui'
 
 import Button from '../components/Buttons'
 
+import { colors } from '../utils/tokens'
+
 const ProductPageProductInformation = (props) => {
   const {
     longDescription,
@@ -18,7 +20,7 @@ const ProductPageProductInformation = (props) => {
     <div className={props.className}>
       <h1
         css={css({
-          fontSize: [3, 3, 4],
+          fontSize: [4, 4, 4],
           mb: 2,
         })}
       >
@@ -29,6 +31,7 @@ const ProductPageProductInformation = (props) => {
           display: `block`,
           fontWeight: `bold`,
           mb: 4,
+          color: `${colors.black}c4`,
         })}
       >
         ${price}

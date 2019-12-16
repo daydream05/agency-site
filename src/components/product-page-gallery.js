@@ -29,18 +29,20 @@ const ProductPageGallery = (props) => {
   // we don't animate if the starting style wasn't passed through
 
   let gatsbyWindow
-  let vhToPixel
-  let vwToPixel
   let isMobile
 
   if(typeof window !== `undefined`) {
     gatsbyWindow = window
     isMobile = window.innerWidth < 1000
-    vhToPixel = value => (gatsbyWindow.innerHeight * value) / 100
-    vwToPixel = value => (gatsbyWindow.innerWidth * value) / 100
   }
 
-  console.log(isMobile)
+  const innerHeight = gatsbyWindow ? gatsbyWindow.innerHeight : 100
+  const innerWidth = gatsbyWindow ? gatsbyWindow.innerWidth : 100
+
+  const vhToPixel = value => (innerHeight * value) / 100
+  const vwToPixel = value => (innerWidth * value) / 100
+
+
 
   const endingStyle = {
     top: 0,

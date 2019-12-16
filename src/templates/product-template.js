@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link, navigate } from 'gatsby'
-import { useSpring, useChain, a } from 'react-spring'
+import { useSpring, a } from 'react-spring'
 import { css } from 'theme-ui'
 import { FaLongArrowAltLeft, FaAngleLeft, FaAngleRight } from "react-icons/fa"
 
@@ -8,7 +8,7 @@ import SEO from '../components/seo'
 import ProductLayout from '../components/product-layout'
 import Container from '../components/container'
 
-import { mediaQueries, space, breakpoints, headerHeight, colors } from "../utils/tokens"
+import { mediaQueries, space, breakpoints, headerHeight } from "../utils/tokens"
 import ProductPageGallery from '../components/product-page-gallery'
 import ProductPageProductInformation from '../components/product-page-product-information'
 
@@ -72,7 +72,7 @@ const ProductTemplate = ({ data, location }) => {
             >
               <aside
                 css={css({
-                  mb: 5,
+                  mb: 4,
                   position: `relative`,
                   [mediaQueries.lg]: {
                     mb: 0,
