@@ -2,7 +2,8 @@
  * This is the default hero component
  */
 
-import React from 'react'
+import React, { Suspense } from 'react'
+import { Dom, Canvas } from 'react-three-fiber'
 import Img from 'gatsby-image'
 import styled, { css } from 'styled-components'
 import { Flex } from 'rebass'
@@ -13,6 +14,8 @@ import WatchVideoButton from '../../watch-video-button'
 import TrailingHeroText from '../../animated/trailing-hero-text'
 import FadingIn from '../../animated/fading-in'
 import FadeInWordByWord from "../../animated/fade-in-word-by-word"
+
+import ImageTexture from '../../three/ImageTexture'
 
 const Section = styled.section`
   display: flex;
@@ -39,7 +42,7 @@ const Section = styled.section`
 
 const Hero = (props) => {
   const { mainText, subText, media, videoUrl } = props
-
+  console.log(media)
   return (
     <Section>
       <Flex
@@ -91,41 +94,11 @@ const Hero = (props) => {
           </FadingIn>
         )}
       </Flex>
-      {media && media.fluid && (
-        <FadingIn
-          css={css({
-            width: `100%`,
-            height: `100%`,
-          })}
-          toggle
-        >
-          <Img
-            fluid={media.fluid}
-            alt={media.title}
-            css={css`
-              position: absolute !important;
-              width: 100%;
-              height: 100%;
-              position: relative;
-
-              ${mediaQueries.lg} {
-                position: relative !important;
-                grid-column: 2;
-              }
-
-              &::after {
-                content: "";
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                background-color: ${colors.black};
-                opacity: 0.2;
-              }
-            `}
-          />
-        </FadingIn>
-      )}
+      <Canvas>
+        <Suspense fallback={<Dom className="loading">Wait you must...</Dom>}>
+          <ImageTexture url={media.file.url} />
+        </Suspense>
+      </Canvas>
     </Section>
   )
 }

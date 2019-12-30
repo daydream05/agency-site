@@ -9,6 +9,9 @@ export const heroFragment = graphql`
     media {
       id
       title
+      file {
+        url
+      }
       fluid {
         ...GatsbyContentfulFluid_withWebp
       }
@@ -55,6 +58,9 @@ export const projectSectionFragment = graphql`
       coverPhoto {
         id
         title
+        file {
+          url
+        }
         fluid {
           ...GatsbyContentfulFluid_withWebp
         }
