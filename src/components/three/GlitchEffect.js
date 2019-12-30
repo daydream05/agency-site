@@ -9,7 +9,6 @@ extend({ EffectComposer, RenderPass, GlitchPass })
 apply({ GlitchPass })
 
 const GlitchEffect = ({ toggle }) => {
-  console.log(toggle)
   const { gl, scene, camera, size } = useThree()
   const composer = useRef()
 

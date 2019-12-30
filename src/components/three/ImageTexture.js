@@ -16,8 +16,6 @@ const ImageTexture = (props) => {
     5000 *
     (aspect > 5000 / 3800 ? viewport.width / 5000 : viewport.height / 3800)
 
-  console.log(adaptedWidth, adaptedHeight)
-
   useEffect(() => {
     const timer = setTimeout(() => setAnimate(false), 1500)
     return () => clearTimeout(timer)
