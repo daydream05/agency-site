@@ -96,7 +96,7 @@ const Hero = (props) => {
       </Flex>
       <Canvas>
         <Suspense fallback={<Dom className="loading">Wait you must...</Dom>}>
-          <ImageTexture url={media.file.url} />
+          <ImageTexture url={`https:${media.file.url}`} />
         </Suspense>
       </Canvas>
     </Section>
