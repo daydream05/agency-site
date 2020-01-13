@@ -96,7 +96,7 @@ const Hero = (props) => {
       </Flex>
       <Canvas>
         <Suspense fallback={<Dom className="loading">Wait you must...</Dom>}>
-          <ImageTexture url={`https:${media.file.url}`} />
+          <ImageTexture url="https://images.ctfassets.net/hdrc9tlu74l0/4gfAcYO5KIgHnxXN8HQwTA/c5ec8be55c30856b82f117389f999fad/person.png" />
         </Suspense>
       </Canvas>
     </Section>
