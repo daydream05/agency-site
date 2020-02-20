@@ -37,7 +37,7 @@ const ImageTexture = (props) => {
       position={[0, 0, 0]}
       rotation={[0, 0, 0]}
       scale={[adaptedWidth, adaptedHeight]}
-      onPointerOver={() => console.log('hello world')}
+      dispose={null}
     >
       <planeBufferGeometry attach="geometry" args={[1, 1]} />
       <meshBasicMaterial attach="material" map={texture} />
