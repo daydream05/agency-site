@@ -95,7 +95,7 @@ const Hero = (props) => {
         )}
       </Flex>
       <Canvas>
-        <ImageTexture url="/person.png" />
+        <ImageTexture url="/shoe.jpg" />
       </Canvas>
     </Section>
   )
